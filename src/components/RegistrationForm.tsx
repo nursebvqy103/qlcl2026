@@ -30,8 +30,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
     setError(null);
 
     // Basic validation
-    if (!formData.full_name.trim() || !formData.phone.trim()) {
-      setError('Vui lòng điền đầy đủ họ tên và số điện thoại.');
+    if (!formData.full_name.trim() || !formData.phone.trim() || !formData.unit.trim() || !formData.email.trim()) {
+      setError('Vui lòng điền đầy đủ các thông tin bắt buộc (*).');
       setLoading(false);
       return;
     }
@@ -41,28 +41,28 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
         .from('dang_ky')
         .insert([
           {
-            full_name: formData.full_name,
+            full_name: formData.full_name.trim(),
             dob: formData.birth_date ? formData.birth_date : null,
-            rank: formData.rank_position,
-            unit: formData.unit,
-            phone: formData.phone,
-            email: formData.email,
-            note: formData.notes
+            rank: formData.rank_position.trim(),
+            unit: formData.unit.trim(),
+            phone: formData.phone.trim(),
+            email: formData.email.trim(),
+            note: formData.notes.trim()
           }
         ]);
 
       if (submitError) {
-        if (submitError.code === '23505') { // Unique violation for phone
-          setError('Số điện thoại này đã được đăng ký.');
+        console.error('Supabase Error:', submitError);
+        if (submitError.code === '23505') {
+          setError('Số điện thoại này đã được đăng ký trên hệ thống.');
         } else {
-          setError('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại sau.');
-          console.error(submitError);
+          setError(`Lỗi CSDL: ${submitError.message}`);
         }
       } else {
         onSuccess();
       }
-    } catch (err) {
-      setError('Lỗi kết nối đến máy chủ.');
+    } catch (err: any) {
+      setError('Lỗi kết nối: ' + (err.message || 'Không thể kết nối đến máy chủ.'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -157,7 +157,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
               </div>
 
               <div>
-                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Đơn vị công tác</label>
+                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Đơn vị công tác <span className="text-red-500">*</span></label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <MapPin size={18} className="text-slate-400" />
@@ -167,6 +167,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
                     name="unit"
                     value={formData.unit}
                     onChange={handleChange}
+                    required
                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition-all"
                     placeholder="Đơn vị hiện tại"
                   />
@@ -175,7 +176,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
             </div>
 
             <div>
-              <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Email</label>
+              <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Email <span className="text-red-500">*</span></label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Mail size={18} className="text-slate-400" />
@@ -185,8 +186,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  required
                   className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition-all"
-                  placeholder="Email liên hệ (nếu có)"
+                  placeholder="Email liên hệ"
                 />
               </div>
             </div>
