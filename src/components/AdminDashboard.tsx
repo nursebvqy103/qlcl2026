@@ -38,12 +38,12 @@ const AdminDashboard = () => {
         index + 1,
         reg.id,
         `"${reg.full_name || ''}"`,
-        `"${formatDate(reg.dob)}"`,
-        `"${reg.rank || ''}"`,
+        `"${formatDate(reg.birth_date)}"`,
+        `"${reg.rank_position || ''}"`,
         `"${reg.unit || ''}"`,
         `"${reg.phone || ''}"`,
         `"${reg.email || ''}"`,
-        `"${(reg.note || '').replace(/"/g, '""')}"`,
+        `"${(reg.notes || '').replace(/"/g, '""')}"`,
         `"${formatDateTime(reg.created_at)}"`
       ].join(',');
     });
@@ -132,12 +132,12 @@ const AdminDashboard = () => {
                   <tr key={reg.id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4 font-bold text-slate-500">{index + 1}</td>
                     <td className="px-6 py-4 font-bold text-slate-800">{reg.full_name}</td>
-                    <td className="px-6 py-4 text-slate-600">{reg.dob ? new Date(reg.dob).toLocaleDateString('vi-VN') : ''}</td>
-                    <td className="px-6 py-4 text-slate-600">{reg.rank}</td>
+                    <td className="px-6 py-4 text-slate-600">{reg.birth_date ? new Date(reg.birth_date).toLocaleDateString('vi-VN') : ''}</td>
+                    <td className="px-6 py-4 text-slate-600">{reg.rank_position}</td>
                     <td className="px-6 py-4 text-slate-600">{reg.unit}</td>
                     <td className="px-6 py-4 text-slate-800 font-medium">{reg.phone}</td>
                     <td className="px-6 py-4 text-slate-600">{reg.email}</td>
-                    <td className="px-6 py-4 text-slate-600 max-w-xs truncate" title={reg.note}>{reg.note}</td>
+                    <td className="px-6 py-4 text-slate-600 max-w-xs truncate" title={reg.notes}>{reg.notes}</td>
                     <td className="px-6 py-4 text-slate-500 text-xs">{new Date(reg.created_at).toLocaleString('vi-VN')}</td>
                   </tr>
                 ))

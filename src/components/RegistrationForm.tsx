@@ -42,12 +42,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
         .insert([
           {
             full_name: formData.full_name.trim(),
-            dob: formData.birth_date ? formData.birth_date : null,
-            rank: formData.rank_position.trim(),
+            birth_date: formData.birth_date ? formData.birth_date : null,
+            rank_position: formData.rank_position.trim(),
             unit: formData.unit.trim(),
             phone: formData.phone.trim(),
             email: formData.email.trim(),
-            note: formData.notes.trim()
+            notes: formData.notes.trim()
           }
         ]);
 
