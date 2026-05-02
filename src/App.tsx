@@ -578,13 +578,9 @@ const App = () => {
                 <CheckCircle2 size={40} className="text-green-600" />
               </div>
               
-              <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 leading-tight uppercase tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-10 leading-tight uppercase tracking-tight">
                 Chúc mừng bạn đã đăng ký tham gia tập huấn quản lý chất lượng bệnh viện năm 2026 thành công. Vui lòng bấm nút quay lại để trở về trang chủ
               </h3>
-              
-              <p className="text-slate-600 font-bold mb-10 leading-relaxed uppercase text-sm tracking-wide">
-                Chúc mừng bạn đã đăng ký tham gia tập huấn quản lý chất lượng bệnh viện năm 2026 thành công
-              </p>
               
               <button 
                 onClick={() => {
