@@ -49,7 +49,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
         .insert([
           {
             full_name: formData.full_name.trim(),
-            birth_date: formData.birth_date ? formData.birth_date : null,
+            birth_date: formData.birth_date,
             rank_position: formData.rank_position.trim(),
             unit: formData.unit.trim(),
             phone: formData.phone.trim(),
