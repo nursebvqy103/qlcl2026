@@ -30,7 +30,14 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
     setError(null);
 
     // Basic validation
-    if (!formData.full_name.trim() || !formData.phone.trim() || !formData.unit.trim() || !formData.email.trim()) {
+    if (
+      !formData.full_name.trim() || 
+      !formData.birth_date.trim() || 
+      !formData.rank_position.trim() || 
+      !formData.unit.trim() || 
+      !formData.phone.trim() || 
+      !formData.email.trim()
+    ) {
       setError('Vui lòng điền đầy đủ các thông tin bắt buộc (*).');
       setLoading(false);
       return;
@@ -104,7 +111,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Ngày sinh</label>
+                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Ngày sinh <span className="text-red-500">*</span></label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Calendar size={18} className="text-slate-400" />
@@ -114,6 +121,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
                     name="birth_date"
                     value={formData.birth_date}
                     onChange={handleChange}
+                    required
                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition-all"
                   />
                 </div>
@@ -140,7 +148,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Cấp bậc / Chức vụ</label>
+                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Cấp bậc / Chức vụ <span className="text-red-500">*</span></label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Briefcase size={18} className="text-slate-400" />
@@ -150,6 +158,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess }) => {
                     name="rank_position"
                     value={formData.rank_position}
                     onChange={handleChange}
+                    required
                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition-all"
                     placeholder="Cấp bậc/Chức vụ"
                   />

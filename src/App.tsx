@@ -316,8 +316,14 @@ const App = () => {
                 </div>
               </div>
               
-              <div className="text-center pt-16 border-t border-slate-100">
+              <div className="text-center pt-16 border-t border-slate-100 flex flex-col items-center gap-4">
                 <p className="text-slate-300 text-[10px] font-black uppercase tracking-[0.8em]">TẬP HUẤN QLCLBV - 2026</p>
+                <a 
+                  href="/admin" 
+                  className="text-[9px] text-slate-200 hover:text-slate-400 transition-colors uppercase tracking-widest font-bold"
+                >
+                  Quản lý
+                </a>
               </div>
             </div>
           </footer>

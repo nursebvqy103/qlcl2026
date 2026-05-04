@@ -20,9 +20,14 @@ ON public.dang_ky
 FOR INSERT 
 WITH CHECK (true);
 
--- 4. Tạo Policy cho phép chỉ SERVICE ROLE/ADMIN mới có quyền xem dữ liệu (SELECT)
--- Lưu ý: Mặc định Service Role (Backend) đã có quyền này, nhưng ta có thể giới hạn thêm nếu muốn.
-CREATE POLICY "Chỉ cho phép xem thông qua Backend hoặc Admin" 
+-- 4. Tạo Policy cho phép MỌI NGƯỜI (Public/Anon) có quyền xem dữ liệu (SELECT)
+-- Để Admin Dashboard trên webapp có thể hiển thị dữ liệu
+CREATE POLICY "Cho phép mọi người xem danh sách" 
 ON public.dang_ky 
 FOR SELECT 
-USING (true); -- Bạn có thể đổi sang 'false' và sử dụng Service Role Key để bảo mật tuyệt đối
+USING (true);
+
+-- 5. Cấp quyền truy cập cho role anon (Public API)
+GRANT SELECT, INSERT ON public.dang_ky TO anon;
+GRANT SELECT, INSERT ON public.dang_ky TO authenticated;
+GRANT ALL ON public.dang_ky TO service_role;

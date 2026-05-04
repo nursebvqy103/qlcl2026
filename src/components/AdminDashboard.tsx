@@ -5,20 +5,29 @@ import { Download, Users, RefreshCw, ChevronLeft } from 'lucide-react';
 const AdminDashboard = () => {
   const [registrations, setRegistrations] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchRegistrations = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from('dang_ky')
-      .select('*')
-      .order('created_at', { ascending: false });
-    
-    if (error) {
-      console.error('Error fetching registrations:', error);
-    } else {
-      setRegistrations(data || []);
+    setError(null);
+    try {
+      const { data, error: fetchError } = await supabase
+        .from('dang_ky')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (fetchError) {
+        console.error('Error fetching registrations:', fetchError);
+        setError(`Lỗi: ${fetchError.message} (${fetchError.code})`);
+      } else {
+        setRegistrations(data || []);
+      }
+    } catch (err: any) {
+      console.error('Unexpected error:', err);
+      setError(`Lỗi không xác định: ${err.message}`);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -119,6 +128,12 @@ const AdminDashboard = () => {
                   <td colSpan={9} className="px-6 py-12 text-center text-slate-400">
                     <RefreshCw size={24} className="animate-spin mx-auto mb-2 opacity-50" />
                     Đang tải dữ liệu...
+                  </td>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td colSpan={9} className="px-6 py-12 text-center text-red-500 bg-red-50 font-bold">
+                    {error}
                   </td>
                 </tr>
               ) : registrations.length === 0 ? (
