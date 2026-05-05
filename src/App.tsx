@@ -7,8 +7,6 @@ import {
   UserCheck, 
   Download, 
   ChevronRight, 
-  Phone, 
-  Mail, 
   CheckCircle2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -280,20 +278,11 @@ const App = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24 text-left">
                 <div className="lg:col-span-2">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8">
-                    <img src={logoBV103} alt="Logo BVQY 103" className="h-12 w-auto object-contain" />
                     <h3 className="font-black text-xl sm:text-2xl text-slate-900 tracking-tighter uppercase leading-tight sm:leading-none">Bệnh viện Quân y 103</h3>
                   </div>
                   <p className="text-slate-500 text-sm mb-10 max-w-md leading-relaxed">
                     Chuyên nghiệp - Hiệu quả - An toàn - Hợp tác.
                   </p>
-                  <div className="flex gap-4">
-                    <a href="tel: 0967 811 616" className="p-4 bg-slate-50 rounded-2xl text-red-700 hover:bg-red-700 hover:text-white transition shadow-sm">
-                      <Phone size={20} />
-                    </a>
-                    <a href="mailto:hospital103@benhvien103.vn" className="p-4 bg-slate-50 rounded-2xl text-red-700 hover:bg-red-700 hover:text-white transition shadow-sm">
-                      <Mail size={20} />
-                    </a>
-                  </div>
                 </div>
 
                 <div>
