@@ -1,0 +1,200 @@
+{
+  "title": "CHƯƠNG TRÌNH HỘI NGHỊ",
+  "organization": "BỆNH VIỆN QUÂN Y 103",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "timezone_offset": "+07:00",
+  "conference_dates": [
+    "2026-05-07",
+    "2026-05-08"
+  ],
+  "days": [
+    {
+      "day_number": 1,
+      "date": "2026-05-07",
+      "display_date": "07/05/2026",
+      "sessions": [
+        {
+          "time_display": "06:30 - 07:30",
+          "content": "Ăn sáng",
+          "implementer": "Nhà ăn tầng 4 - BVQY103",
+          "type": "meal"
+        },
+        {
+          "section_code": "I",
+          "section_title": "KHAI MẠC HỘI NGHỊ TẬP HUẤN",
+          "type": "section"
+        },
+        {
+          "time_display": "07:30 - 08:00",
+          "content": "Đón tiếp Đại biểu",
+          "implementer": "Ban Tổ chức",
+          "type": "ceremony"
+        },
+        {
+          "time_display": "08:00 - 08:10",
+          "content": "Tuyên bố lý do, giới thiệu đại biểu",
+          "implementer": "Ban Tổ chức",
+          "type": "ceremony"
+        },
+        {
+          "time_display": "08:10 - 08:20",
+          "content": "Phát biểu khai mạc Hội nghị tập huấn",
+          "implementer": "Thiếu tướng, GS.TS. Nguyễn Trường Giang - Cục Trưởng Cục Quân y, Tổng cục HC-KT, Bộ Quốc phòng",
+          "type": "ceremony"
+        },
+        {
+          "time_display": "08:20 - 08:30",
+          "content": "Phát biểu chào mừng Hội nghị tập huấn",
+          "implementer": "TS.BS. Hà Anh Đức - Cục trưởng Cục Quản lý Khám chữa bệnh, Bộ Y tế",
+          "type": "ceremony"
+        },
+        {
+          "section_code": "II",
+          "section_title": "MODULE 1: TỔNG QUAN VỀ QLCL BỆNH VIỆN",
+          "type": "section"
+        },
+        {
+          "time_display": "08:30 - 09:15",
+          "content": "Tổng quan quản lý chất lượng bệnh viện",
+          "implementer": "TS.BS. Hà Anh Đức - Cục trưởng Cục Quản lý khám chữa bệnh/Bộ Y tế",
+          "type": "lecture"
+        },
+        {
+          "time_display": "09:15 - 09:45",
+          "content": "Quản trị bệnh viện trong vấn đề đảm bảo cung ứng thuốc, vật tư y tế kịp thời cho công tác khám bệnh, chữa bệnh",
+          "implementer": "GS.TS. Nguyễn Hoàng Định - Phó Giám đốc Bệnh viện Đại học Y Dược Thành phố Hồ Chí Minh",
+          "type": "lecture"
+        },
+        {
+          "time_display": "09:45 - 10:00",
+          "content": "Giải lao",
+          "implementer": "",
+          "type": "break"
+        },
+        {
+          "time_display": "10:00 - 10:45",
+          "content": "Ứng dụng chuyển đổi số trong quản lý, đánh giá chất lượng bệnh viện",
+          "implementer": "ThS. Đào Nguyên Minh - Trưởng phòng Quản lý chất lượng và Chuyển giao kỹ thuật/Cục QLKCB/BYT",
+          "type": "lecture"
+        },
+        {
+          "time_display": "10:45 - 11:30",
+          "content": "Hệ thống quản lý chất lượng tại Bệnh viện Quân y 103",
+          "implementer": "ThS. La Quang Hổ - Trưởng ban QLCL Bệnh viện/Bệnh viện Quân y 103",
+          "type": "lecture"
+        },
+        {
+          "time_display": "11:30 - 12:30",
+          "content": "Ăn trưa",
+          "implementer": "Nhà ăn tầng 4 - BVQY103",
+          "type": "meal"
+        },
+        {
+          "section_code": "III",
+          "section_title": "MODULE 2: AN TOÀN NGƯỜI BỆNH",
+          "type": "section"
+        },
+        {
+          "time_display": "13:30 - 14:15",
+          "content": "Mục tiêu quốc tế về an toàn người bệnh",
+          "implementer": "TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group",
+          "type": "lecture"
+        },
+        {
+          "time_display": "14:15 - 15:00",
+          "content": "Quản lý sự cố y khoa",
+          "implementer": "TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group",
+          "type": "lecture"
+        },
+        {
+          "time_display": "15:00 - 15:15",
+          "content": "Giải lao",
+          "implementer": "",
+          "type": "break"
+        },
+        {
+          "time_display": "15:15 - 16:30",
+          "content": "Kỹ thuật phân tích nguyên nhân gốc rễ",
+          "implementer": "TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group",
+          "type": "lecture"
+        },
+        {
+          "time_display": "17:30 - 20:00",
+          "content": "Gala Diner",
+          "implementer": "Nhà ăn tầng 4 - BVQY103",
+          "type": "meal"
+        }
+      ]
+    },
+    {
+      "day_number": 2,
+      "date": "2026-05-08",
+      "display_date": "08/05/2026",
+      "sessions": [
+        {
+          "time_display": "06:30 - 07:30",
+          "content": "Ăn sáng",
+          "implementer": "Nhà ăn tầng 4 - BVQY103",
+          "type": "meal"
+        },
+        {
+          "section_code": "IV",
+          "section_title": "MODULE 3: CÔNG CỤ & CHỈ SỐ CHẤT LƯỢNG",
+          "type": "section"
+        },
+        {
+          "time_display": "07:30 - 08:15",
+          "content": "Công cụ quản lý chất lượng và quản trị rủi ro",
+          "implementer": "TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group",
+          "type": "lecture"
+        },
+        {
+          "time_display": "08:15 - 09:00",
+          "content": "Xây dựng chỉ số chất lượng bệnh viện",
+          "implementer": "TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group",
+          "type": "lecture"
+        },
+        {
+          "time_display": "09:00 - 09:30",
+          "content": "Thực hành xây dựng chỉ số chất lượng",
+          "implementer": "TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group",
+          "type": "practice"
+        },
+        {
+          "time_display": "09:30 - 10:00",
+          "content": "Thảo luận và giải đáp thắc mắc",
+          "implementer": "Cục QLKCB & Chuyên gia JCI",
+          "type": "discussion"
+        },
+        {
+          "time_display": "10:00 - 10:15",
+          "content": "Kiểm tra đánh giá cuối khóa (Làm bài Test)",
+          "implementer": "Cục Quân y",
+          "type": "test"
+        },
+        {
+          "time_display": "10:15 - 10:30",
+          "content": "Giải lao",
+          "implementer": "",
+          "type": "break"
+        },
+        {
+          "section_title": "LỄ BẾ MẠC",
+          "type": "section"
+        },
+        {
+          "time_display": "10:30 - 10:45",
+          "content": "Phát biểu Bế mạc",
+          "implementer": "Đại tá, TS.BSCKII. Trần Duy Hưng, Phó Cục trưởng Cục Quân y/ Tổng cục HC-KT/Bộ Quốc phòng",
+          "type": "ceremony"
+        },
+        {
+          "time_display": "10:45 - 11:30",
+          "content": "Trao chứng nhận chứng chỉ CME",
+          "implementer": "Ban Tổ chức",
+          "type": "ceremony"
+        }
+      ]
+    }
+  ]
+}

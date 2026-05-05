@@ -1,0 +1,1812 @@
+{
+  "quiz_id": "qlcl_kiem_tra_2026",
+  "title": "Bộ câu hỏi kiểm tra Quản lý chất lượng bệnh viện",
+  "description": "Bộ 60 câu hỏi trắc nghiệm dùng cho webapp, random đề và chấm điểm tự động.",
+  "total_questions": 60,
+  "question_type": "single_choice",
+  "score_per_question": 1,
+  "randomizable": true,
+  "created_for": "QLCL-v3",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Triết lý Quản lý chất lượng (QLCL) hiện đại trong bệnh viện tập trung vào sự chuyển dịch nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ tập trung vào việc nâng cao tay nghề của bác sĩ lâm sàng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Từ kiểm soát sai lỗi sang phòng ngừa sai lỗi từ hệ thống.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Tập trung hoàn toàn vào việc mua sắm trang thiết bị hiện đại.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Từ phòng ngừa sai lỗi sang kiểm soát sai lỗi cá nhân.",
+          "is_correct": false
+        }
+      ],
+      "module": "QLCL cơ bản",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 2,
+      "question": "Bộ tiêu chí chất lượng bệnh viện Việt Nam (phiên bản 2.0) bao gồm bao nhiêu tiêu chí chính thức?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "50 tiêu chí.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "83 tiêu chí.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "78 tiêu chí.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "112 tiêu chí.",
+          "is_correct": false
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 3,
+      "question": "Mục tiêu số 1 của An toàn người bệnh quốc tế (IPSG) là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Xác định chính xác người bệnh.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Nâng cao an toàn sử dụng thuốc.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Cải thiện thông tin giao tiếp hiệu quả.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Đảm bảo phẫu thuật an toàn.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn người bệnh",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 4,
+      "question": "Trong mô hình quản lý chất lượng dựa trên quy trình, yếu tố nào được coi là 'Nhu cầu' của hệ thống?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Nhu cầu của người dân và người bệnh.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Chỉ số hài lòng của nhân viên y tế.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Lợi nhuận kinh tế của bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Số lượng máy móc hiện đại nhập về.",
+          "is_correct": false
+        }
+      ],
+      "module": "QLCL cơ bản",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 5,
+      "question": "Nguyên tắc 'Viết xuống - Đọc lại - Xác nhận' (Write down - Read back - Confirm) áp dụng cho tình huống nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Khi bàn giao hồ sơ bệnh án định kỳ.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Khi ra y lệnh bằng lời hoặc qua điện thoại.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Khi người bệnh thực hiện thủ tục xuất viện.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Khi kiểm kê trang thiết bị y tế cuối năm.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 6,
+      "question": "Công cụ ISBAR thường được đối tượng nào sử dụng chủ yếu trong giao tiếp y tế?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Người bệnh phản hồi ý kiến qua đường dây nóng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Lãnh đạo bệnh viện báo cáo với Bộ Y tế.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Điều dưỡng giao ban, chuyển khoa hoặc báo cáo bác sĩ.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Kế toán bệnh viện thông báo chi phí điều trị.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 7,
+      "question": "Theo định nghĩa của Viện Y khoa Hoa Kỳ (IOM), có bao nhiêu chiều hướng của chất lượng y tế?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "10 chiều hướng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "4 chiều hướng.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "6 chiều hướng.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "8 chiều hướng.",
+          "is_correct": false
+        }
+      ],
+      "module": "QLCL cơ bản",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 8,
+      "question": "Mục đích chính của việc áp dụng Thang điểm Morse là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Phân loại mức độ ưu tiên khám bệnh tại khoa Khám bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Xác định liều lượng thuốc cần thiết cho bệnh nhân cấp cứu.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Đánh giá và sàng lọc nguy cơ trượt ngã của người bệnh.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Đánh giá mức độ hài lòng của người bệnh nội trú.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn người bệnh",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 9,
+      "question": "Thuật ngữ 'LASA' trong quản lý thuốc an toàn dùng để chỉ nhóm thuốc nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Thuốc có giá thành cao và hiếm.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Thuốc có tên gọi, bao bì hoặc âm thanh tương tự dễ nhầm lẫn.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Thuốc không cần kê đơn (OTC).",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Thuốc kháng sinh thế hệ mới.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn thuốc",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 10,
+      "question": "Trong Bộ 83 tiêu chí của Bộ Y tế, Phần A tập trung vào nội dung nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Cải tiến chất lượng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Hoạt động chuyên môn.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Phát triển nguồn nhân lực.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Hướng đến người bệnh.",
+          "is_correct": true
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 11,
+      "question": "Theo tiêu chuẩn JCI, quy định yêu cầu đối chiếu ít nhất bao nhiêu thông tin để xác định chính xác người bệnh?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "3 thông tin.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Chỉ cần số giường bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "2 thông tin.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "4 thông tin.",
+          "is_correct": false
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 12,
+      "question": "Bảng kiểm an toàn phẫu thuật của WHO được chia thành bao nhiêu giai đoạn bắt buộc?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "5 giai đoạn tương ứng với các bước phẫu thuật.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "2 giai đoạn: Trước mổ và Sau mổ.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "4 giai đoạn: Khám tiền mê, Sign-in, Time-out và Hậu phẫu.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "3 giai đoạn: Trước gây mê (Sign-in), Trước rạch da (Time-out) và Trước khi rời phòng mổ (Sign-out).",
+          "is_correct": true
+        }
+      ],
+      "module": "An toàn phẫu thuật",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 13,
+      "question": "Thành phần 'S' trong công cụ giao tiếp SOAP của bác sĩ có nghĩa là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Sign-in - Kiểm tra trước gây mê.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Situation - Tình huống hiện tại.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Subjective - Thông tin chủ quan từ lời khai của người bệnh.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Safety - Đảm bảo an toàn người bệnh.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 14,
+      "question": "Theo thống kê của Ủy ban liên hợp quốc tế, các sự cố xảy ra trong trao đổi thông tin chiếm bao nhiêu % tổng số sự cố y khoa?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Khoảng 25%.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Khoảng 65%.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Khoảng 90%.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Dưới 10%.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 15,
+      "question": "Trong bảng kiểm an toàn phẫu thuật, việc 'Đánh dấu vị trí phẫu thuật' do ai chịu trách nhiệm thực hiện chính?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Phẫu thuật viên trực tiếp thực hiện cuộc mổ.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Điều dưỡng phòng mổ.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Học viên hoặc sinh viên thực tập.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Bác sĩ gây mê hồi sức.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn phẫu thuật",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 16,
+      "question": "Hệ thống phân tầng chất lượng bệnh viện mới (theo hướng nâng cao) gồm những hạng nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Hạng Đạt - Hạng Khá - Hạng Tốt.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Hạng Đồng - Hạng Bạc - Hạng Vàng.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Hạng 1 - Hạng 2 - Hạng 3.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Hạng Chuẩn - Hạng Nâng cao - Hạng Xuất sắc.",
+          "is_correct": true
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 17,
+      "question": "Thời điểm nào là BẮT BUỘC phải thực hiện xác định danh tính người bệnh?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ khi bệnh nhân mới nhập viện tại khoa Cấp cứu.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Khi người bệnh yêu cầu được kiểm tra thông tin.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Chỉ khi bác sĩ yêu cầu kiểm tra đối chiếu.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Trước khi dùng thuốc, truyền máu, lấy bệnh phẩm hoặc thực hiện thủ thuật.",
+          "is_correct": true
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 18,
+      "question": "Thành phần 'R' trong cấu trúc ISBAR (Recommendation) có nội dung gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Nhắc lại các kết quả xét nghiệm đã có.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Ghi nhận lại toàn bộ diễn biến bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Đề xuất biện pháp can thiệp ngay hoặc xin ý kiến chỉ đạo.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Yêu cầu người bệnh ký cam kết phẫu thuật.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 19,
+      "question": "Tại sao JCI tuyệt đối cấm sử dụng từ viết tắt 'tự phát' trong hồ sơ bệnh án?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Vì quy định của pháp luật Việt Nam không cho phép viết tắt.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Vì tốn diện tích lưu trữ của hồ sơ giấy.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Để thuận tiện cho việc thanh toán bảo hiểm y tế.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Để tránh hiểu nhầm thông tin gây sai sót trong điều trị.",
+          "is_correct": true
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 20,
+      "question": "Trong quy trình 'Sign-out' của bảng kiểm phẫu thuật, nhân viên y tế cần xác nhận nội dung nào to, rõ ràng?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Số lượng máu đã mất trong cuộc mổ.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Lịch hẹn tái khám của người bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Hoàn thành việc đếm dụng cụ, miếng bọt biển và kim.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Chi phí tiêu hao vật tư của ca phẫu thuật.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn phẫu thuật",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 21,
+      "question": "Đặc điểm của phương pháp đánh giá mỗi tiêu chí trong Bộ tiêu chuẩn nâng cao là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Đánh giá theo mức độ, phân tầng nguy cơ và dựa trên tỷ lệ đạt.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Chỉ dựa vào sự hài lòng của lãnh đạo bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Chấm điểm theo 'điều kiện cứng' có hoặc không.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Đánh giá một lần duy nhất khi bệnh viện mới thành lập.",
+          "is_correct": false
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 22,
+      "question": "Trong quản trị y tế hiện đại, nguyên lý 'Không đo lường cũng đồng nghĩa là không cải tiến' nhằm nhấn mạnh vai trò của yếu tố nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Cảm nhận cá nhân của điều dưỡng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Số lượng bằng khen bệnh viện nhận được.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Hệ thống chỉ số chất lượng và dữ liệu khách quan.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Ngân sách chi tiêu hàng tháng.",
+          "is_correct": false
+        }
+      ],
+      "module": "KPI và dữ liệu",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 23,
+      "question": "Quy trình 'Time-out' trong phẫu thuật thường được thực hiện vào thời điểm nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Khi bệnh nhân đang trong giai đoạn hồi sức hậu phẫu.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Ngay trước khi phẫu thuật viên thực hiện rạch da.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Sau khi đã đóng vết mổ thành công.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Ngay khi bệnh nhân vào đến cửa phòng mổ.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn phẫu thuật",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 24,
+      "question": "Theo JCI, việc thông báo kết quả xét nghiệm 'nguy hiểm' (Critical results) phải tuân theo quy trình nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Gửi email thông báo cho toàn bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Phòng xét nghiệm gọi trực tiếp, bác sĩ nhận kết quả phải 'đọc lại' và ghi hồ sơ.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Chờ đến buổi giao ban sáng hôm sau để thông báo.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Dán thông báo tại bảng tin của khoa điều trị.",
+          "is_correct": false
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 25,
+      "question": "Yêu cầu cơ bản nhất của nhãn cảnh báo thuốc nguy cơ cao là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Phải có chữ ký của Giám đốc bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Chỉ được viết bằng tiếng Anh để theo chuẩn quốc tế.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Dễ nhận diện, có màu sắc/biểu tượng cảnh báo riêng biệt.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Phải ghi đầy đủ giá tiền của thuốc.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn thuốc",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 26,
+      "question": "Trong 'Mô hình Phô mai Thụy Sĩ' về sai sót y khoa, các lỗ hổng trong các lát phô mai đại diện cho điều gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Việc thiếu hụt ngân sách mua sắm vật tư.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Sự yếu kém của một cá nhân bác sĩ.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Các rủi ro tiềm ẩn hoặc lỗi hệ thống ở mỗi tầng bảo vệ.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Số lượng bệnh nhân quá tải tại bệnh viện.",
+          "is_correct": false
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 27,
+      "question": "Hoạt động nào sau đây thuộc về mục tiêu IPSG số 5?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Đánh dấu vùng mổ bằng mực không xóa.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Dán nhãn LASA cho thuốc có tên giống nhau.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Dùng 2 yếu tố để định danh người bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Tuân thủ 5 thời điểm vệ sinh tay của WHO.",
+          "is_correct": true
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 28,
+      "question": "Khái niệm 'Giao tiếp vòng kín' (Closed-loop communication) nhấn mạnh bước nào sau đây?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ giao tiếp thông qua tin nhắn văn bản.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Người nhận phải xác nhận lại tính chính xác của thông tin.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Người phát tin phải nói thật nhanh.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Không được phép đặt câu hỏi hỏi lại.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 29,
+      "question": "Tại Bệnh viện Phương Châu, công cụ nào được sử dụng để hỗ trợ bàn giao người bệnh hiệu quả bên cạnh iSBAR?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "SOAP.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Bảng kiểm Morse.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "I-PASS hoặc BATON.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Quy tắc 5W1H.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 30,
+      "question": "Theo tiêu chuẩn JCI phiên bản 8, quy trình chuẩn hóa cho việc trao đổi thông tin (IPSG.02.01) nhằm mục đích gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Để tăng doanh thu từ dịch vụ cận lâm sàng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Bắt buộc mọi cuộc hội thoại phải được ghi âm.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Giảm bớt số lượng nhân viên y tế cần thiết.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Tạo điều kiện thuận lợi cho việc chuyển giao dịch vụ chăm sóc một cách nhất quán và đầy đủ.",
+          "is_correct": true
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 31,
+      "question": "Trong hệ thống đánh giá mới, bệnh viện đạt 'Mức xuất sắc' cần thỏa mãn điều kiện nào về tiêu chí mức 3?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ cần lãnh đạo bệnh viện đánh giá là xuất sắc.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Chỉ cần đạt 50% tiêu chí mức 3.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Không bắt buộc đạt bất kỳ tiêu chí mức 3 nào.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Phải đạt ít nhất 80% tiêu chí mức 3.",
+          "is_correct": true
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 32,
+      "question": "Tiêu chuẩn JCI phiên bản 8 quy định chương Quản trị, lãnh đạo và định hướng (GLD) có bao nhiêu yếu tố đo lường (ME)?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "58 ME.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "39 ME.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "142 ME.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "150 ME.",
+          "is_correct": false
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "hard",
+      "score": 1
+    },
+    {
+      "id": 33,
+      "question": "Điều kiện để một bệnh viện được xếp vào 'Mức chuẩn' theo hệ thống đánh giá mới là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Đạt điểm trung bình các tiêu chí từ 3.0 trở lên.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "100% tiêu chí đạt.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Chỉ cần không có sự cố y khoa nghiêm trọng xảy ra.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "80% tiêu chí đạt và tỷ lệ không đạt ≤ 5%.",
+          "is_correct": true
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 34,
+      "question": "Sự khác biệt cốt lõi giữa tiêu chuẩn JCI phiên bản 8 và các phiên bản trước đó trong việc đánh giá an toàn người bệnh là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ tập trung đánh giá hồ sơ giấy thay vì thực hành lâm sàng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Tích hợp chọn lọc các nguyên tắc cốt lõi của JCI phù hợp điều kiện Việt Nam.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Giảm bớt số lượng các mục tiêu IPSG.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Bỏ qua vai trò của lãnh đạo trong việc giám sát chất lượng.",
+          "is_correct": false
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "hard",
+      "score": 1
+    },
+    {
+      "id": 35,
+      "question": "Trong trường hợp người bệnh không thể trả lời thông tin định danh (hôn mê, trẻ sơ sinh), quy trình xác nhận phải thực hiện như thế nào theo Bộ Y tế?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ cần đối chiếu số giường và số phòng bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Chờ cho đến khi người bệnh tỉnh táo mới thực hiện dịch vụ.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Xác nhận thông qua người nhà/người giám hộ và đối chiếu vòng đeo tay/hệ thống mã số.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Tự ý sử dụng thông tin trên hồ sơ mà không cần kiểm tra thêm.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn người bệnh",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 36,
+      "question": "Nội dung nào dưới đây KHÔNG nằm trong danh mục của bảng kiểm an toàn phẫu thuật WHO năm 2009?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Đánh giá nguy cơ mất máu và khả năng thiết lập đường truyền.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Kê khai chi tiết thu nhập của toàn bộ ê-kíp phẫu thuật.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Dự kiến các bước nguy kịch hoặc bất thường có thể xảy ra.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Xác nhận danh tính, vị trí mổ và phương pháp phẫu thuật.",
+          "is_correct": false
+        }
+      ],
+      "module": "An toàn phẫu thuật",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 37,
+      "question": "Tại sao việc 'Đọc to tên mẫu bệnh phẩm' trong quy trình Sign-out lại vô cùng quan trọng?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Để kéo dài thời gian chờ cho thuốc mê hết tác dụng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Để gây ấn tượng với các học viên đang quan sát cuộc mổ.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Để phẫu thuật viên ghi nhớ kết quả giải phẫu bệnh sau này.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Để đảm bảo mẫu vật được dán nhãn đúng tên bệnh nhân và loại bệnh phẩm trước khi gửi đi.",
+          "is_correct": true
+        }
+      ],
+      "module": "An toàn phẫu thuật",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 38,
+      "question": "Khái niệm 'Chất lượng y tế toàn diện' theo Viện Y khoa Hoa Kỳ năm 2001 bổ sung thêm yếu tố nào so với các định nghĩa truyền thống?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ tập trung vào tỷ lệ khỏi bệnh.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Số lượng công trình nghiên cứu khoa học của bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Việc sử dụng thuốc ngoại nhập hoàn toàn.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Tính Công bằng và Hiệu suất (Hiệu năng).",
+          "is_correct": true
+        }
+      ],
+      "module": "QLCL cơ bản",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 39,
+      "question": "Trong quy trình báo cáo sự cố y khoa, nguyên nhân 'nhầm thủ thuật/phẫu thuật' thường được truy xuất gốc rễ từ thiếu sót nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Do trang thiết bị phòng mổ không được bảo trì.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Do bệnh nhân tự ý thay đổi vị trí nằm.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Do tay nghề của phẫu thuật viên quá kém.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Xác định danh tính người bệnh không tốt và chưa thực hiện tốt bảng kiểm an toàn.",
+          "is_correct": true
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 40,
+      "question": "Tỷ lệ sai sót trong trao đổi thông tin dẫn đến hậu quả nghiêm trọng nhất thường xảy ra ở 'điểm chạm' nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Quá trình chuyển giao chăm sóc (bàn giao ca, chuyển khoa).",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Khi bác sĩ đang nghiên cứu tài liệu tại phòng làm việc.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Khi người bệnh đăng ký tại quầy tiếp đón.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Lúc người bệnh đang ngủ tại buồng bệnh.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 41,
+      "question": "Theo Viện Y khoa Hoa Kỳ (IOM), chiều hướng chất lượng nào tập trung vào việc đảm bảo dịch vụ y tế không thay đổi dựa trên đặc điểm cá nhân như giới tính hay địa vị kinh tế?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Hiệu quả (Effective).",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Lấy người bệnh làm trung tâm (Patient-Centered).",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Công bằng (Equitable).",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Kịp thời (Timely).",
+          "is_correct": false
+        }
+      ],
+      "module": "QLCL cơ bản",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 42,
+      "question": "Trong cấu trúc hệ thống quản lý chất lượng bệnh viện 3 cấp, đơn vị nào đóng vai trò là 'đầu mối tham mưu trực tiếp' cho Giám đốc?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Hội đồng Quản lý chất lượng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Mạng lưới Quản lý chất lượng.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Phòng Kế hoạch tổng hợp.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Phòng/Tổ Quản lý chất lượng.",
+          "is_correct": true
+        }
+      ],
+      "module": "QLCL cơ bản",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 43,
+      "question": "Điểm đổi mới mang tính tiên phong trong chương 'Tác động sức khỏe toàn cầu (GHI)' của JCI phiên bản 8 là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Kiểm soát nhiễm khuẩn bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Đào tạo y khoa liên tục (CME).",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Quản lý dữ liệu bệnh nhân nội trú.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Tính bền vững môi trường của cơ sở y tế.",
+          "is_correct": true
+        }
+      ],
+      "module": "IPSG/JCI",
+      "difficulty": "hard",
+      "score": 1
+    },
+    {
+      "id": 44,
+      "question": "Cấu trúc phân tầng của bộ tiêu chuẩn ACHSI (Úc) được sắp xếp theo trình tự nào sau đây?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Mục tiêu - Hành động - Kết quả - Đánh giá.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Đầu vào - Quy trình - Đầu ra - Tác động.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Phần - Chương - Tiêu chí - Chỉ số.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Chức năng - Tiêu chuẩn - Tiêu chí - Yếu tố - Hướng dẫn.",
+          "is_correct": true
+        }
+      ],
+      "module": "Tiêu chuẩn quốc tế",
+      "difficulty": "hard",
+      "score": 1
+    },
+    {
+      "id": 45,
+      "question": "Theo định hướng bộ tiêu chuẩn nâng cao, phương pháp đánh giá nào được sử dụng để thay thế cho việc chỉ chấm điểm 'đạt/không đạt' truyền thống?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Đánh giá dựa trên thâm niên của bệnh viện.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Đánh giá dựa trên phân tầng rủi ro và tỷ lệ đạt.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Đánh giá dựa trên cảm nhận của nhân viên.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Đánh giá dựa trên số lượng máy móc.",
+          "is_correct": false
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 46,
+      "question": "Công cụ nào trong IPSG được khuyến cáo sử dụng để chuẩn hóa thông tin trong quá trình bàn giao ca trực và báo cáo hội chẩn?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chu trình PDSA.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Mô hình ISBAR.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Sơ đồ Xương cá.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Thang điểm Morse.",
+          "is_correct": false
+        }
+      ],
+      "module": "Giao tiếp an toàn",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 47,
+      "question": "Bệnh viện Quân y 103 đề ra mục tiêu đạt mức điểm trung bình chung theo Bộ 83 tiêu chí là bao nhiêu vào giai đoạn 2026?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "≥ 4,15.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "≥ 3,50.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "≥ 4,50.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "5 tuyệt đối.",
+          "is_correct": false
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 48,
+      "question": "Tại sao việc xác định đúng danh tính người bệnh bằng 'câu hỏi mở' lại quan trọng hơn 'câu hỏi đóng'?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Để tiết kiệm thời gian cho điều dưỡng.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Vì quy định pháp luật chỉ bắt buộc câu hỏi mở.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Để kiểm tra khả năng ghi nhớ của bệnh nhân.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Tránh việc người bệnh gật đầu theo thói quen mà không xác nhận kỹ thông tin.",
+          "is_correct": true
+        }
+      ],
+      "module": "An toàn người bệnh",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 49,
+      "question": "Trong Phân tích nguyên nhân gốc rễ (RCA), tầng nguyên nhân 'Latent conditions' (lỗi hệ thống) thường có đặc điểm gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Nằm tiềm ẩn trong quy trình, thiết kế hệ thống và quản lý.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Chỉ liên quan đến thiết bị y tế bị hỏng.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Xảy ra ngay lập tức và dễ dàng quan sát được.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Là những sai sót trực tiếp của nhân viên y tế khi thực hiện kỹ thuật.",
+          "is_correct": false
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 50,
+      "question": "Theo Thông tư 43/2018/TT-BYT, thời hạn tối đa để hoàn thành quá trình điều tra phân tích RCA và đề xuất giải pháp là bao lâu?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "60 ngày.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "90 ngày.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "30 ngày.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "24 giờ.",
+          "is_correct": false
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 51,
+      "question": "Trong chu trình PDCA, bước 'Check' thực hiện nhiệm vụ trọng tâm nào?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Lập kế hoạch chi tiết cho các hoạt động cải tiến.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Đo lường kết quả thực hiện và đối chiếu với mục tiêu ban đầu.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Đào tạo nhân viên cách sử dụng phần mềm mới.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Nhân rộng mô hình cải tiến ra toàn bệnh viện.",
+          "is_correct": false
+        }
+      ],
+      "module": "Cải tiến chất lượng",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 52,
+      "question": "Công cụ 'FMEA' khác với 'RCA' ở điểm cơ bản nào trong quản trị rủi ro?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "FMEA tốn ít nguồn lực hơn RCA.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "FMEA chỉ dành cho máy móc, RCA dành cho con người.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "FMEA là quản trị chủ động (phòng ngừa trước), RCA là quản trị bị động (sau khi sự cố xảy ra).",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "FMEA do Bộ Y tế bắt buộc, RCA là tùy chọn theo chuẩn JCI.",
+          "is_correct": false
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 53,
+      "question": "Nguyên tắc SMART yêu cầu một chỉ số chất lượng (KPI) phải có tính chất 'Relevant'. Điều này có nghĩa là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Phải có khả năng đo lường được bằng các con số.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Phải liên quan trực tiếp đến mục tiêu chiến lược của tổ chức.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Phải có thời hạn hoàn thành cụ thể.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Phải là một chỉ số thực tế có thể đạt được.",
+          "is_correct": false
+        }
+      ],
+      "module": "KPI và dữ liệu",
+      "difficulty": "easy",
+      "score": 1
+    },
+    {
+      "id": 54,
+      "question": "Trong quản trị rủi ro, 'Poka-yoke' được hiểu là phương pháp gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chống sai lỗi bằng các rào cản kỹ thuật/công nghệ cứng.",
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "text": "Cách thức tổ chức cuộc họp phân tích sự cố.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Kỹ thuật đặt câu hỏi 'Tại sao' liên tiếp.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Phương pháp nhắc nhở nhân viên bằng văn bản hành chính.",
+          "is_correct": false
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 55,
+      "question": "Chỉ số 'Tỷ lệ báo cáo sự cố y khoa tự nguyện' (Near-miss) phản ánh rõ nhất yếu tố nào trong một bệnh viện?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Sự thiếu hụt trang thiết bị hiện đại.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Văn hóa an toàn và niềm tin của nhân viên y tế.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Năng lực chuyên môn kém của nhân viên.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Số lượng bệnh nhân quá tải.",
+          "is_correct": false
+        }
+      ],
+      "module": "KPI và dữ liệu",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 56,
+      "question": "Sự khác biệt cốt lõi giữa quản lý chất lượng truyền thống và quản trị hiện đại trong kỷ nguyên số là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Chỉ tập trung vào việc thay thế hồ sơ giấy bằng file Word.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Tăng cường số lượng nhân viên đi kiểm tra trực tiếp.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Chuyển từ quản lý hành chính sang quản trị dựa trên dữ liệu thời gian thực.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Tập trung tối đa vào việc mua sắm robot phẫu thuật.",
+          "is_correct": false
+        }
+      ],
+      "module": "Chuyển đổi số QLCL",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 57,
+      "question": "Để một bệnh viện được xếp hạng 'Xuất sắc' theo hệ thống phân tầng chất lượng mới, yêu cầu về tiêu chí mức 3 là gì?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Có ít nhất 1 chứng nhận JCI hoặc ACHSI.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Đạt ≥ 80% tiêu chí mức 3 và đạt 100% mức 1, 2.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Chỉ cần đạt 50% tiêu chí mức 3.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Đạt 100% tiêu chí mức 3 và không quan tâm mức 1, 2.",
+          "is_correct": false
+        }
+      ],
+      "module": "Bộ tiêu chí chất lượng",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 58,
+      "question": "Trong tình huống 'Phân tích 5-Whys' về việc tiêm nhầm thuốc, nếu câu hỏi thứ 5 chỉ dừng lại ở 'Do điều dưỡng thiếu tập trung', thì cuộc phân tích đã đạt mục tiêu chưa?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Rồi, vì đã tìm ra người chịu trách nhiệm trực tiếp.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Chưa, vì đó vẫn là lỗi cá nhân, chưa chạm đến lỗ hổng hệ thống.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Chưa, vì cần phải hỏi đến câu thứ 10 mới đúng kỹ thuật.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Rồi, vì 5 câu hỏi là số lượng tối đa theo quy định.",
+          "is_correct": false
+        }
+      ],
+      "module": "Quản trị rủi ro/RCA",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 59,
+      "question": "Việc sử dụng Camera AI tại khu vực Cấp cứu (theo kinh nghiệm của BVQY 103) nhằm mục đích chính yếu nào trong QLCL?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Để thay thế bảo vệ trong việc giữ gìn an ninh trật tự.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Giám sát tính tự giác tuân thủ quy trình và thái độ giao tiếp.",
+          "is_correct": true
+        },
+        {
+          "id": "C",
+          "text": "Để tính toán chi phí khám chữa bệnh chính xác hơn.",
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "text": "Để ghi hình làm bằng chứng kỷ luật nhân viên.",
+          "is_correct": false
+        }
+      ],
+      "module": "Chuyển đổi số QLCL",
+      "difficulty": "medium",
+      "score": 1
+    },
+    {
+      "id": 60,
+      "question": "Tại sao trong mô hình KPIs y tế, trụ cột 'Lâm sàng và An toàn' lại được coi là 'thước đo sinh tử' của bệnh viện?",
+      "type": "single",
+      "answers": [
+        {
+          "id": "A",
+          "text": "Vì nó giúp bệnh viện thu được nhiều lợi nhuận nhất.",
+          "is_correct": false
+        },
+        {
+          "id": "B",
+          "text": "Vì đây là trụ cột có số lượng chỉ số nhiều nhất.",
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "text": "Vì nó ảnh hưởng trực tiếp đến tính mạng người bệnh và uy tín bệnh viện.",
+          "is_correct": true
+        },
+        {
+          "id": "D",
+          "text": "Vì Bộ Y tế chỉ chấm điểm dựa trên trụ cột này.",
+          "is_correct": false
+        }
+      ],
+      "module": "KPI và dữ liệu",
+      "difficulty": "medium",
+      "score": 1
+    }
+  ]
+}

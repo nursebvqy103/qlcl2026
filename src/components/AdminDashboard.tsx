@@ -1,48 +1,101 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { Download, Users, RefreshCw, ChevronLeft } from 'lucide-react';
+import { ChevronLeft, ClipboardCheck, Download, Power, RefreshCw, Users } from 'lucide-react';
+
+type AdminTab = 'registrations' | 'tests';
 
 const AdminDashboard = () => {
+  const [activeTab, setActiveTab] = useState<AdminTab>('registrations');
   const [registrations, setRegistrations] = useState<any[]>([]);
+  const [testResults, setTestResults] = useState<any[]>([]);
+  const [testOpen, setTestOpen] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [testLoading, setTestLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchRegistrations = async () => {
+    const { data, error: fetchError } = await supabase
+      .from('dang_ky')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (fetchError) throw fetchError;
+    setRegistrations(data || []);
+  };
+
+  const fetchTestResults = async () => {
+    const { data, error: fetchError } = await supabase
+      .from('kq_test')
+      .select('id, full_name, rank_position, unit, score, max_score, percentage, total_questions, created_at')
+      .order('created_at', { ascending: false });
+
+    if (fetchError) throw fetchError;
+    setTestResults(data || []);
+  };
+
+  const fetchTestStatus = async () => {
+    const { data, error: fetchError } = await supabase
+      .from('app_settings')
+      .select('value')
+      .eq('key', 'test_open')
+      .maybeSingle();
+
+    if (fetchError) throw fetchError;
+    setTestOpen(data?.value?.open !== false);
+  };
+
+  const refreshAll = async () => {
     setLoading(true);
     setError(null);
     try {
-      const { data, error: fetchError } = await supabase
-        .from('dang_ky')
-        .select('*')
-        .order('created_at', { ascending: false });
-      
-      if (fetchError) {
-        console.error('Error fetching registrations:', fetchError);
-        setError(`Lỗi: ${fetchError.message} (${fetchError.code})`);
-      } else {
-        setRegistrations(data || []);
-      }
+      await Promise.all([fetchRegistrations(), fetchTestResults(), fetchTestStatus()]);
     } catch (err: any) {
-      console.error('Unexpected error:', err);
-      setError(`Lỗi không xác định: ${err.message}`);
+      console.error('Admin fetch error:', err);
+      setError(`Lỗi: ${err.message || 'Không thể tải dữ liệu'}`);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchRegistrations();
+    refreshAll();
   }, []);
 
-  const exportToCSV = () => {
-    // Thêm BOM (Byte Order Mark) để Excel nhận diện đúng UTF-8
+  const toggleTestStatus = async () => {
+    const nextOpen = !testOpen;
+    setTestLoading(true);
+    setError(null);
+
+    try {
+      const { error: updateError } = await supabase
+        .from('app_settings')
+        .upsert(
+          {
+            key: 'test_open',
+            value: { open: nextOpen },
+            updated_at: new Date().toISOString()
+          },
+          { onConflict: 'key' }
+        );
+
+      if (updateError) throw updateError;
+      setTestOpen(nextOpen);
+    } catch (err: any) {
+      console.error('Toggle test status error:', err);
+      setError(`Lỗi cập nhật trạng thái kiểm tra: ${err.message}`);
+    } finally {
+      setTestLoading(false);
+    }
+  };
+
+  const exportRegistrationsToCSV = () => {
     const BOM = '\uFEFF';
     const header = ['STT', 'ID', 'Họ và tên', 'Ngày sinh', 'Cấp bậc/Chức vụ', 'Đơn vị', 'Số điện thoại', 'Email', 'Ghi chú', 'Ngày đăng ký'].join(',');
-    
+
     const rows = registrations.map((reg, index) => {
       const formatDate = (d: string) => d ? new Date(d).toLocaleDateString('vi-VN') : '';
       const formatDateTime = (d: string) => d ? new Date(d).toLocaleString('vi-VN') : '';
-      
+
       return [
         index + 1,
         reg.id,
@@ -57,13 +110,35 @@ const AdminDashboard = () => {
       ].join(',');
     });
 
-    const csvContent = BOM + header + '\n' + rows.join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    downloadCSV(BOM + header + '\n' + rows.join('\n'), `danh_sach_dang_ky_${new Date().toISOString().slice(0, 10)}.csv`);
+  };
+
+  const exportTestResultsToCSV = () => {
+    const BOM = '\uFEFF';
+    const header = ['STT', 'ID', 'Họ và tên', 'Cấp bậc/Chức vụ', 'Đơn vị', 'Điểm', 'Tổng điểm', 'Tỷ lệ', 'Thời gian nộp'].join(',');
+
+    const rows = testResults.map((item, index) => [
+      index + 1,
+      item.id,
+      `"${item.full_name || ''}"`,
+      `"${item.rank_position || ''}"`,
+      `"${item.unit || ''}"`,
+      item.score ?? 0,
+      item.max_score ?? item.total_questions ?? 30,
+      `"${item.percentage ?? 0}%"`,
+      `"${item.created_at ? new Date(item.created_at).toLocaleString('vi-VN') : ''}"`
+    ].join(','));
+
+    downloadCSV(BOM + header + '\n' + rows.join('\n'), `ket_qua_kiem_tra_${new Date().toISOString().slice(0, 10)}.csv`);
+  };
+
+  const downloadCSV = (content: string, filename: string) => {
+    const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
-    
+
     link.setAttribute('href', url);
-    link.setAttribute('download', `danh_sach_dang_ky_${new Date().toISOString().slice(0,10)}.csv`);
+    link.setAttribute('download', filename);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -75,94 +150,180 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 p-6 md:p-8">
         <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => window.location.href = '/'}
               className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500"
+              aria-label="Quay lại trang chủ"
             >
               <ChevronLeft size={24} />
             </button>
             <div>
               <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tight flex items-center gap-3">
-                <Users className="text-red-700" />
-                Danh sách đăng ký
+                {activeTab === 'registrations' ? <Users className="text-red-700" /> : <ClipboardCheck className="text-red-700" />}
+                Quản lý hội nghị
               </h2>
-              <p className="text-sm text-slate-500 font-medium">Tổng số: {registrations.length} người tham gia</p>
+              <p className="text-sm text-slate-500 font-medium">
+                Đăng ký: {registrations.length} người | Kết quả kiểm tra: {testResults.length} bài
+              </p>
             </div>
           </div>
-          <div className="flex gap-3">
-            <button 
-              onClick={fetchRegistrations}
+
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={toggleTestStatus}
+              disabled={testLoading}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-colors text-sm uppercase tracking-wider shadow-sm disabled:opacity-60 ${
+                testOpen ? 'bg-green-700 hover:bg-green-800 text-white' : 'bg-red-700 hover:bg-red-800 text-white'
+              }`}
+            >
+              <Power size={16} />
+              {testLoading ? 'Đang cập nhật...' : testOpen ? 'Đang mở kiểm tra' : 'Đang đóng kiểm tra'}
+            </button>
+            <button
+              onClick={refreshAll}
               className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold transition-colors text-sm uppercase tracking-wider"
             >
-              <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
+              <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
               Làm mới
             </button>
-            <button 
-              onClick={exportToCSV}
+            <button
+              onClick={activeTab === 'registrations' ? exportRegistrationsToCSV : exportTestResultsToCSV}
               className="flex items-center gap-2 px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20 text-sm uppercase tracking-wider"
             >
               <Download size={16} />
-              Xuất Excel (CSV)
+              Xuất CSV
             </button>
           </div>
         </div>
 
-        <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm">
-          <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-slate-50 text-slate-600 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4">STT</th>
-                <th className="px-6 py-4">Họ và tên</th>
-                <th className="px-6 py-4">Ngày sinh</th>
-                <th className="px-6 py-4">Cấp bậc/Chức vụ</th>
-                <th className="px-6 py-4">Đơn vị</th>
-                <th className="px-6 py-4">Số điện thoại</th>
-                <th className="px-6 py-4">Email</th>
-                <th className="px-6 py-4">Ghi chú</th>
-                <th className="px-6 py-4">Ngày đăng ký</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {loading ? (
-                <tr>
-                  <td colSpan={9} className="px-6 py-12 text-center text-slate-400">
-                    <RefreshCw size={24} className="animate-spin mx-auto mb-2 opacity-50" />
-                    Đang tải dữ liệu...
-                  </td>
-                </tr>
-              ) : error ? (
-                <tr>
-                  <td colSpan={9} className="px-6 py-12 text-center text-red-500 bg-red-50 font-bold">
-                    {error}
-                  </td>
-                </tr>
-              ) : registrations.length === 0 ? (
-                <tr>
-                  <td colSpan={9} className="px-6 py-12 text-center text-slate-400 font-bold uppercase text-xs tracking-widest">
-                    Chưa có ai đăng ký
-                  </td>
-                </tr>
-              ) : (
-                registrations.map((reg, index) => (
-                  <tr key={reg.id} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="px-6 py-4 font-bold text-slate-500">{index + 1}</td>
-                    <td className="px-6 py-4 font-bold text-slate-800">{reg.full_name}</td>
-                    <td className="px-6 py-4 text-slate-600">{reg.birth_date ? new Date(reg.birth_date).toLocaleDateString('vi-VN') : ''}</td>
-                    <td className="px-6 py-4 text-slate-600">{reg.rank_position}</td>
-                    <td className="px-6 py-4 text-slate-600">{reg.unit}</td>
-                    <td className="px-6 py-4 text-slate-800 font-medium">{reg.phone}</td>
-                    <td className="px-6 py-4 text-slate-600">{reg.email}</td>
-                    <td className="px-6 py-4 text-slate-600 max-w-xs truncate" title={reg.notes}>{reg.notes}</td>
-                    <td className="px-6 py-4 text-slate-500 text-xs">{new Date(reg.created_at).toLocaleString('vi-VN')}</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+        <div className="mb-6 flex w-fit rounded-2xl bg-slate-100 p-1">
+          <button
+            onClick={() => setActiveTab('registrations')}
+            className={`px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+              activeTab === 'registrations' ? 'bg-white text-red-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            Danh sách đăng ký
+          </button>
+          <button
+            onClick={() => setActiveTab('tests')}
+            className={`px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+              activeTab === 'tests' ? 'bg-white text-red-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            Kết quả kiểm tra
+          </button>
         </div>
+
+        {error && (
+          <div className="mb-6 rounded-2xl border border-red-100 bg-red-50 p-4 text-center text-sm font-bold text-red-700">
+            {error}
+          </div>
+        )}
+
+        {activeTab === 'registrations' ? (
+          <RegistrationsTable registrations={registrations} loading={loading} />
+        ) : (
+          <TestResultsTable testResults={testResults} loading={loading} />
+        )}
       </div>
     </div>
   );
 };
+
+const RegistrationsTable = ({ registrations, loading }: { registrations: any[]; loading: boolean }) => (
+  <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm">
+    <table className="w-full text-left text-sm whitespace-nowrap">
+      <thead className="bg-slate-50 text-slate-600 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
+        <tr>
+          <th className="px-6 py-4">STT</th>
+          <th className="px-6 py-4">Họ và tên</th>
+          <th className="px-6 py-4">Ngày sinh</th>
+          <th className="px-6 py-4">Cấp bậc/Chức vụ</th>
+          <th className="px-6 py-4">Đơn vị</th>
+          <th className="px-6 py-4">Số điện thoại</th>
+          <th className="px-6 py-4">Email</th>
+          <th className="px-6 py-4">Ghi chú</th>
+          <th className="px-6 py-4">Ngày đăng ký</th>
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-slate-100">
+        {loading ? (
+          <TableLoading colSpan={9} />
+        ) : registrations.length === 0 ? (
+          <TableEmpty colSpan={9} message="Chưa có ai đăng ký" />
+        ) : (
+          registrations.map((reg, index) => (
+            <tr key={reg.id} className="hover:bg-slate-50/50 transition-colors">
+              <td className="px-6 py-4 font-bold text-slate-500">{index + 1}</td>
+              <td className="px-6 py-4 font-bold text-slate-800">{reg.full_name}</td>
+              <td className="px-6 py-4 text-slate-600">{reg.birth_date ? new Date(reg.birth_date).toLocaleDateString('vi-VN') : ''}</td>
+              <td className="px-6 py-4 text-slate-600">{reg.rank_position}</td>
+              <td className="px-6 py-4 text-slate-600">{reg.unit}</td>
+              <td className="px-6 py-4 text-slate-800 font-medium">{reg.phone}</td>
+              <td className="px-6 py-4 text-slate-600">{reg.email}</td>
+              <td className="px-6 py-4 text-slate-600 max-w-xs truncate" title={reg.notes}>{reg.notes}</td>
+              <td className="px-6 py-4 text-slate-500 text-xs">{new Date(reg.created_at).toLocaleString('vi-VN')}</td>
+            </tr>
+          ))
+        )}
+      </tbody>
+    </table>
+  </div>
+);
+
+const TestResultsTable = ({ testResults, loading }: { testResults: any[]; loading: boolean }) => (
+  <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm">
+    <table className="w-full text-left text-sm whitespace-nowrap">
+      <thead className="bg-slate-50 text-slate-600 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
+        <tr>
+          <th className="px-6 py-4">STT</th>
+          <th className="px-6 py-4">Họ và tên</th>
+          <th className="px-6 py-4">Cấp bậc/Chức vụ</th>
+          <th className="px-6 py-4">Đơn vị</th>
+          <th className="px-6 py-4">Điểm</th>
+          <th className="px-6 py-4">Tỷ lệ</th>
+          <th className="px-6 py-4">Thời gian nộp</th>
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-slate-100">
+        {loading ? (
+          <TableLoading colSpan={7} />
+        ) : testResults.length === 0 ? (
+          <TableEmpty colSpan={7} message="Chưa có kết quả kiểm tra" />
+        ) : (
+          testResults.map((item, index) => (
+            <tr key={item.id} className="hover:bg-slate-50/50 transition-colors">
+              <td className="px-6 py-4 font-bold text-slate-500">{index + 1}</td>
+              <td className="px-6 py-4 font-bold text-slate-800">{item.full_name}</td>
+              <td className="px-6 py-4 text-slate-600">{item.rank_position}</td>
+              <td className="px-6 py-4 text-slate-600">{item.unit}</td>
+              <td className="px-6 py-4 font-black text-red-700">{item.score}/{item.max_score || item.total_questions || 30}</td>
+              <td className="px-6 py-4 font-bold text-green-800">{item.percentage ?? 0}%</td>
+              <td className="px-6 py-4 text-slate-500 text-xs">{item.created_at ? new Date(item.created_at).toLocaleString('vi-VN') : ''}</td>
+            </tr>
+          ))
+        )}
+      </tbody>
+    </table>
+  </div>
+);
+
+const TableLoading = ({ colSpan }: { colSpan: number }) => (
+  <tr>
+    <td colSpan={colSpan} className="px-6 py-12 text-center text-slate-400">
+      <RefreshCw size={24} className="animate-spin mx-auto mb-2 opacity-50" />
+      Đang tải dữ liệu...
+    </td>
+  </tr>
+);
+
+const TableEmpty = ({ colSpan, message }: { colSpan: number; message: string }) => (
+  <tr>
+    <td colSpan={colSpan} className="px-6 py-12 text-center text-slate-400 font-bold uppercase text-xs tracking-widest">
+      {message}
+    </td>
+  </tr>
+);
 
 export default AdminDashboard;

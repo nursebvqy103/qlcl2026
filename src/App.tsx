@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import RegistrationForm from './components/RegistrationForm';
+import TestForm from './components/TestForm';
 
 const App = () => {
   const [activeDay, setActiveDay] = useState(1);
@@ -99,25 +100,30 @@ const App = () => {
 
   // Thông tin chương trình ngày 07/05/2026
   const agendaDay1 = [
+    { time: '06:30 - 07:30', title: 'Ăn sáng', speakers: 'Nhà ăn tầng 4 - BVQY103' },
+    { isModule: true, title: 'I. Khai mạc hội nghị tập huấn' },
     { time: '07:30 - 08:00', title: 'Đón tiếp Đại biểu', speakers: 'Ban Tổ chức' },
-    { time: '08:00 - 08:10', title: 'Tuyên bố lý do, giới thiệu Đại biểu', speakers: 'Ban Tổ chức' },
-    { time: '08:10 - 08:20', title: 'Phát biểu Khai mạc', speakers: 'Thiếu tướng, GS.TS. Nguyễn Trường Giang - Cục trưởng Cục Quân y/Tổng cục Hậu cần - Kỹ thuật/Bộ Quốc phòng' },
-    { time: '08:20 - 08:30', title: 'Phát biểu chào mừng', speakers: 'TS.BS. Hà Anh Đức - Cục trưởng Cục Quản lý Khám chữa bệnh/Bộ Y tế' },
-    { isModule: true, title: 'Sáng - Module 1: Tổng quan về QLCL Bệnh viện' },
+    { time: '08:00 - 08:10', title: 'Tuyên bố lý do, giới thiệu đại biểu', speakers: 'Ban Tổ chức' },
+    { time: '08:10 - 08:20', title: 'Phát biểu khai mạc Hội nghị tập huấn', speakers: 'Thiếu tướng, GS.TS. Nguyễn Trường Giang - Cục Trưởng Cục Quân y, Tổng cục HC-KT, Bộ Quốc phòng' },
+    { time: '08:20 - 08:30', title: 'Phát biểu chào mừng Hội nghị tập huấn', speakers: 'TS.BS. Hà Anh Đức - Cục trưởng Cục Quản lý Khám chữa bệnh, Bộ Y tế' },
+    { isModule: true, title: 'II. Module 1: Tổng quan về QLCL Bệnh viện' },
     { time: '08:30 - 09:15', title: 'Tổng quan quản lý chất lượng bệnh viện', speakers: 'TS.BS. Hà Anh Đức - Cục trưởng Cục Quản lý khám chữa bệnh/Bộ Y tế' },
     { time: '09:15 - 09:45', title: 'Quản trị bệnh viện trong vấn đề đảm bảo cung ứng thuốc, vật tư y tế kịp thời cho công tác khám bệnh, chữa bệnh', speakers: 'GS.TS. Nguyễn Hoàng Định - Phó Giám đốc Bệnh viện Đại học Y Dược Thành phố Hồ Chí Minh' },
     { time: '09:45 - 10:00', title: 'Giải lao', speakers: '' },
     { time: '10:00 - 10:45', title: 'Ứng dụng chuyển đổi số trong quản lý, đánh giá chất lượng bệnh viện', speakers: 'ThS. Đào Nguyên Minh - Trưởng phòng Quản lý chất lượng và Chuyển giao kỹ thuật/Cục QLKCB/BYT' },
     { time: '10:45 - 11:30', title: 'Hệ thống quản lý chất lượng tại Bệnh viện Quân y 103', speakers: 'ThS. La Quang Hổ - Trưởng ban QLCL Bệnh viện/Bệnh viện Quân y 103' },
-    { isModule: true, title: 'Chiều - Module 2: An toàn người bệnh' },
+    { time: '11:30 - 12:30', title: 'Ăn trưa', speakers: 'Nhà ăn tầng 4 - BVQY103' },
+    { isModule: true, title: 'III. Module 2: An toàn người bệnh' },
     { time: '13:30 - 14:15', title: 'Mục tiêu quốc tế về an toàn người bệnh', speakers: 'TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group' },
-    { time: '14.15 - 15.00', title: 'Quản lý sự cố y khoa', speakers: 'TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group' },
+    { time: '14:15 - 15:00', title: 'Quản lý sự cố y khoa', speakers: 'TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group' },
     { time: '15:00 - 15:15', title: 'Giải lao', speakers: '' },
     { time: '15:15 - 16:30', title: 'Kỹ thuật phân tích nguyên nhân gốc rễ', speakers: 'TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group' },
+    { time: '17:30 - 20:00', title: 'Gala Diner', speakers: 'Nhà ăn tầng 4 - BVQY103' },
   ];
 
   // Thông tin chương trình ngày 08/05/2026
   const agendaDay2 = [
+    { time: '06:30 - 07:30', title: 'Ăn sáng', speakers: 'Nhà ăn tầng 4 - BVQY103' },
     { isModule: true, title: 'Sáng - Module 3: Công cụ & chỉ số chất lượng' },
     { time: '07:30 - 08:15', title: 'Công cụ quản lý chất lượng và quản trị rủi ro', speakers: 'TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group' },
     { time: '08:15 - 09:00', title: 'Xây dựng chỉ số chất lượng bệnh viện', speakers: 'TS. Đinh Thùy Dương - Phó Giám đốc Khối Y tế Tập đoàn Sun Group' },
@@ -148,6 +154,7 @@ const App = () => {
             </button>
             <button onClick={openRegistration} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'registration' ? 'text-red-700' : ''}`}>Đăng ký</button>
             <button onClick={() => setActiveSection('agenda')} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'agenda' ? 'text-red-700' : ''}`}>Chương trình</button>
+            <button onClick={() => setActiveSection('test')} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'test' ? 'text-red-700' : ''}`}>Kiểm tra</button>
             {activeSection !== 'registration' && (
               <button onClick={() => setActiveSection('documents')} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'documents' ? 'text-red-700' : ''}`}>Tài liệu</button>
             )}
@@ -157,65 +164,57 @@ const App = () => {
 
       {/* Hero Section */}
       {activeSection === 'home' && (
-        <section id="cover" className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <section id="cover" className="pt-32 pb-20 px-2 sm:px-4 lg:px-8 relative overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-[3rem] p-8 md:p-16 shadow-2xl relative z-10"
+          className="w-full max-w-7xl mx-auto bg-white border border-slate-200 rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 lg:p-16 shadow-2xl relative z-10 overflow-hidden"
         >
           {/* Top Logos Row */}
-          <div className="flex justify-between items-start mb-16 px-4 md:px-0">
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center mb-3 shadow-xl border-4 border-white overflow-hidden">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-start gap-3 sm:gap-8 mb-10 sm:mb-12 px-1 sm:px-4 md:px-0">
+            <div className="flex flex-col items-center justify-self-start">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center mb-2 shadow-xl border-4 border-white overflow-hidden">
                 <img src={logoCQY} alt="Logo Cục Quân y" className="w-full h-full object-contain" />
               </div>
-              <span className="text-[10px] md:text-sm font-black text-green-800 text-center uppercase leading-tight tracking-tighter">Cục Quân Y</span>
+              <span className="text-[8px] sm:text-[10px] md:text-sm font-black text-green-800 text-center uppercase leading-tight tracking-tighter">Cục Quân Y</span>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center mb-3 shadow-xl border-4 border-white overflow-hidden text-center">
+            <div className="flex flex-col items-center justify-self-center pt-20 sm:pt-24 md:pt-32">
+              <p className="text-[10px] sm:text-xs md:text-base font-black text-green-800 uppercase tracking-wider mb-3 text-center whitespace-nowrap">Đơn vị tổ chức</p>
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-white overflow-hidden">
+                <img src={logoBV103} alt="Logo Bệnh viện Quân y 103" className="w-full h-full object-contain p-1" />
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-self-end">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center mb-2 shadow-xl border-4 border-white overflow-hidden text-center">
                 <img src={logoQLKCB} alt="Logo Cục QLKCB" className="w-full h-full object-contain" />
               </div>
-              <span className="text-[10px] md:text-sm font-black text-green-800 text-center uppercase leading-tight tracking-tighter">Cục Quản Lý<br/>Khám Chữa Bệnh</span>
+              <span className="text-[8px] sm:text-[10px] md:text-sm font-black text-green-800 text-center uppercase leading-tight tracking-tighter">Cục Quản Lý<br/>Khám Chữa Bệnh</span>
             </div>
           </div>
 
           {/* Title Branding */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 border-b-2 border-slate-800/70 pb-8">
             <motion.h2 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-[15px] sm:text-2xl md:text-3xl font-bold text-red-600 uppercase tracking-[0.1em] sm:tracking-[0.2em] mb-4 whitespace-nowrap"
+              className="text-[clamp(1.6rem,5vw,3.75rem)] font-black text-red-600 uppercase leading-[1.15] mb-3 font-sans px-1"
             >
-              Hội nghị tập huấn
+              HỘI NGHỊ TẬP HUẤN
             </motion.h2>
             <motion.h1 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-[20px] md:text-6xl font-black text-green-800 uppercase leading-[1.3] mb-8 font-sans px-4"
+              className="text-[clamp(1rem,3.4vw,2.6rem)] font-black text-green-800 uppercase leading-[1.2] mb-0 font-sans px-1"
             >
-              Quản lý chất lượng <br className="hidden md:block" /> Bệnh viện năm 2026
+              <span className="block whitespace-nowrap">Quản lý chất lượng Bệnh viện năm 2026</span>
             </motion.h1>
-            
-            <div className="max-w-3xl mx-auto bg-red-50/50 border-y-2 border-red-100 py-8 my-10">
-              <p className="text-red-700 font-black italic text-sm md:text-xl leading-relaxed uppercase px-6 text-center">
-                Chủ đề: “Quản trị chất lượng và an toàn người bệnh: từ tiêu chí, tiêu chuẩn quốc gia đến chuẩn mực quốc tế trong kỷ nguyên số”
-              </p>
-            </div>
           </div>
 
           {/* Info Section */}
           <div className="flex flex-col items-center gap-12 mb-16">
-            <div className="text-center">
-               <p className="text-[10px] font-black text-green-800 uppercase tracking-widest mb-4">Đơn vị chủ trì</p>
-               <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-xl overflow-hidden mx-auto mb-3">
-                  <img src={logoBV103} alt="BV103" className="w-full h-full object-contain p-1" />
-               </div>
-               <p className="text-[11px] md:text-sm font-black text-slate-800 uppercase">Bệnh viện Quân y 103</p>
-            </div>
-            
             <div className="text-center">
                <p className="text-[10px] font-black text-green-800 uppercase tracking-widest mb-4">Đơn vị tài trợ</p>
                <div className="flex flex-col items-center gap-3">
@@ -447,6 +446,19 @@ const App = () => {
             </div>
           </motion.div>
         </div>
+        </section>
+      )}
+
+      {/* Test Section */}
+      {activeSection === 'test' && (
+        <section id="test" className="py-24 px-4 bg-slate-50 min-h-screen pt-24 text-center">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight text-emerald-900">Kiểm tra đánh giá cuối khóa</h2>
+              <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px]">Hội nghị tập huấn quản lý chất lượng bệnh viện năm 2026</p>
+            </div>
+            <TestForm />
+          </div>
         </section>
       )}
 
