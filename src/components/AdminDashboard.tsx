@@ -146,33 +146,33 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8 selection:bg-red-100 selection:text-red-700 font-sans">
-      <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 p-6 md:p-8">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-          <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-slate-50 p-2 sm:p-4 md:p-8 selection:bg-red-100 selection:text-red-700 font-sans">
+      <div className="max-w-7xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-100 p-4 sm:p-6 md:p-8">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between mb-8 gap-4">
+          <div className="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0">
             <button
               onClick={() => window.location.href = '/'}
-              className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500"
+              className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500 shrink-0"
               aria-label="Quay lại trang chủ"
             >
               <ChevronLeft size={24} />
             </button>
-            <div>
-              <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tight flex items-center gap-3">
+            <div className="min-w-0">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-800 uppercase tracking-tight flex items-center gap-3">
                 {activeTab === 'registrations' ? <Users className="text-red-700" /> : <ClipboardCheck className="text-red-700" />}
                 Quản lý hội nghị
               </h2>
-              <p className="text-sm text-slate-500 font-medium">
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">
                 Đăng ký: {registrations.length} người | Kết quả kiểm tra: {testResults.length} bài
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-wrap gap-3">
             <button
               onClick={toggleTestStatus}
               disabled={testLoading}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-colors text-sm uppercase tracking-wider shadow-sm disabled:opacity-60 ${
+              className={`flex items-center justify-center gap-2 px-4 py-3 sm:py-2 rounded-xl font-bold transition-colors text-xs sm:text-sm uppercase tracking-wider shadow-sm disabled:opacity-60 ${
                 testOpen ? 'bg-green-700 hover:bg-green-800 text-white' : 'bg-red-700 hover:bg-red-800 text-white'
               }`}
             >
@@ -181,14 +181,14 @@ const AdminDashboard = () => {
             </button>
             <button
               onClick={refreshAll}
-              className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold transition-colors text-sm uppercase tracking-wider"
+              className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold transition-colors text-xs sm:text-sm uppercase tracking-wider"
             >
               <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
               Làm mới
             </button>
             <button
               onClick={activeTab === 'registrations' ? exportRegistrationsToCSV : exportTestResultsToCSV}
-              className="flex items-center gap-2 px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20 text-sm uppercase tracking-wider"
+              className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-green-700 hover:bg-green-800 text-white rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20 text-xs sm:text-sm uppercase tracking-wider"
             >
               <Download size={16} />
               Xuất CSV
@@ -196,10 +196,10 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="mb-6 flex w-fit rounded-2xl bg-slate-100 p-1">
+        <div className="mb-6 grid w-full grid-cols-2 rounded-2xl bg-slate-100 p-1 sm:flex sm:w-fit">
           <button
             onClick={() => setActiveTab('registrations')}
-            className={`px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+            className={`px-3 sm:px-5 py-3 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wide sm:tracking-widest transition-all ${
               activeTab === 'registrations' ? 'bg-white text-red-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'
             }`}
           >
@@ -207,7 +207,7 @@ const AdminDashboard = () => {
           </button>
           <button
             onClick={() => setActiveTab('tests')}
-            className={`px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+            className={`px-3 sm:px-5 py-3 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wide sm:tracking-widest transition-all ${
               activeTab === 'tests' ? 'bg-white text-red-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'
             }`}
           >
@@ -233,7 +233,7 @@ const AdminDashboard = () => {
 
 const RegistrationsTable = ({ registrations, loading }: { registrations: any[]; loading: boolean }) => (
   <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm">
-    <table className="w-full text-left text-sm whitespace-nowrap">
+    <table className="w-full min-w-[920px] text-left text-sm whitespace-nowrap">
       <thead className="bg-slate-50 text-slate-600 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
         <tr>
           <th className="px-6 py-4">STT</th>
@@ -274,7 +274,7 @@ const RegistrationsTable = ({ registrations, loading }: { registrations: any[]; 
 
 const TestResultsTable = ({ testResults, loading }: { testResults: any[]; loading: boolean }) => (
   <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm">
-    <table className="w-full text-left text-sm whitespace-nowrap">
+    <table className="w-full min-w-[760px] text-left text-sm whitespace-nowrap">
       <thead className="bg-slate-50 text-slate-600 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
         <tr>
           <th className="px-6 py-4">STT</th>

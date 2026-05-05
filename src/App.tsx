@@ -139,48 +139,53 @@ const App = () => {
   return (
     <div className="min-h-screen bg-[#fffcf5] text-slate-800 font-sans selection:bg-red-100 selection:text-red-700">
       {/* Fixed Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div></div>
-          <div className="flex items-center space-x-8 text-[11px] font-black text-slate-500">
+      <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 min-h-14 sm:h-16 flex items-center justify-center">
+          <div className="grid w-full grid-cols-5 items-center gap-0 sm:flex sm:w-auto sm:gap-4 md:gap-8 py-2 text-[10px] sm:text-[11px] font-black text-slate-500">
             <button 
               onClick={() => {
                 setActiveSection('home');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }} 
-              className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'home' && typeof window !== 'undefined' && window.scrollY < 500 ? 'text-red-700' : ''}`}
+              className={`min-w-0 hover:text-red-700 transition uppercase tracking-tight sm:tracking-widest px-1 sm:px-2 py-2 text-center ${activeSection === 'home' && typeof window !== 'undefined' && window.scrollY < 500 ? 'text-red-700' : ''}`}
             >
-              Trang chủ
+              <span className="block leading-tight sm:inline sm:leading-normal">Trang<br className="sm:hidden" /> chủ</span>
             </button>
-            <button onClick={openRegistration} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'registration' ? 'text-red-700' : ''}`}>Đăng ký</button>
-            <button onClick={() => setActiveSection('agenda')} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'agenda' ? 'text-red-700' : ''}`}>Chương trình</button>
-            <button onClick={() => setActiveSection('test')} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'test' ? 'text-red-700' : ''}`}>Kiểm tra</button>
-            {activeSection !== 'registration' && (
-              <button onClick={() => setActiveSection('documents')} className={`hover:text-red-700 transition uppercase tracking-widest px-2 py-1 ${activeSection === 'documents' ? 'text-red-700' : ''}`}>Tài liệu</button>
-            )}
+            <button onClick={openRegistration} className={`min-w-0 hover:text-red-700 transition uppercase tracking-tight sm:tracking-widest px-1 sm:px-2 py-2 text-center ${activeSection === 'registration' ? 'text-red-700' : ''}`}>
+              <span className="block leading-tight sm:inline sm:leading-normal">Đăng<br className="sm:hidden" /> ký</span>
+            </button>
+            <button onClick={() => setActiveSection('agenda')} className={`min-w-0 hover:text-red-700 transition uppercase tracking-tight sm:tracking-widest px-1 sm:px-2 py-2 text-center ${activeSection === 'agenda' ? 'text-red-700' : ''}`}>
+              <span className="block leading-tight sm:inline sm:leading-normal">Chương<br className="sm:hidden" /> trình</span>
+            </button>
+            <button onClick={() => setActiveSection('test')} className={`min-w-0 hover:text-red-700 transition uppercase tracking-tight sm:tracking-widest px-1 sm:px-2 py-2 text-center ${activeSection === 'test' ? 'text-red-700' : ''}`}>
+              <span className="block leading-tight sm:inline sm:leading-normal">Kiểm<br className="sm:hidden" /> tra</span>
+            </button>
+            <button onClick={() => setActiveSection('documents')} className={`min-w-0 hover:text-red-700 transition uppercase tracking-tight sm:tracking-widest px-1 sm:px-2 py-2 text-center ${activeSection === 'documents' ? 'text-red-700' : ''}`}>
+              <span className="block leading-tight sm:inline sm:leading-normal">Tài<br className="sm:hidden" /> liệu</span>
+            </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       {activeSection === 'home' && (
-        <section id="cover" className="pt-32 pb-20 px-2 sm:px-4 lg:px-8 relative overflow-hidden">
+        <section id="cover" className="pt-24 sm:pt-32 pb-14 sm:pb-20 px-2 sm:px-4 lg:px-8 relative overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full max-w-7xl mx-auto bg-white border border-slate-200 rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 lg:p-16 shadow-2xl relative z-10 overflow-hidden"
+          className="w-full max-w-7xl mx-auto bg-white border border-slate-200 rounded-[1.5rem] sm:rounded-[3rem] p-4 sm:p-8 md:p-12 lg:p-16 shadow-2xl relative z-10 overflow-hidden"
         >
           {/* Top Logos Row */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-start gap-3 sm:gap-8 mb-10 sm:mb-12 px-1 sm:px-4 md:px-0">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-2 sm:gap-8 mb-10 sm:mb-12 px-0 sm:px-4 md:px-0">
             <div className="flex flex-col items-center justify-self-start">
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center mb-2 shadow-xl border-4 border-white overflow-hidden">
                 <img src={logoCQY} alt="Logo Cục Quân y" className="w-full h-full object-contain" />
               </div>
               <span className="text-[8px] sm:text-[10px] md:text-sm font-black text-green-800 text-center uppercase leading-tight tracking-tighter">Cục Quân Y</span>
             </div>
-            <div className="flex flex-col items-center justify-self-center pt-20 sm:pt-24 md:pt-32">
-              <p className="text-[10px] sm:text-xs md:text-base font-black text-green-800 uppercase tracking-wider mb-3 text-center whitespace-nowrap">Đơn vị tổ chức</p>
+            <div className="flex flex-col items-center justify-self-center pt-16 sm:pt-24 md:pt-32">
+              <p className="text-[9px] sm:text-xs md:text-base font-black text-green-800 uppercase tracking-normal sm:tracking-wider mb-3 text-center whitespace-nowrap">Đơn vị tổ chức</p>
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-white overflow-hidden">
                 <img src={logoBV103} alt="Logo Bệnh viện Quân y 103" className="w-full h-full object-contain p-1" />
               </div>
@@ -207,10 +212,16 @@ const App = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-[clamp(1rem,3.4vw,2.6rem)] font-black text-green-800 uppercase leading-[1.2] mb-0 font-sans px-1"
+              className="text-[clamp(1.15rem,4.5vw,2.6rem)] font-black text-green-800 uppercase leading-[1.2] mb-0 font-sans px-1"
             >
-              <span className="block whitespace-nowrap">Quản lý chất lượng Bệnh viện năm 2026</span>
+              <span className="block sm:whitespace-nowrap">Quản lý chất lượng Bệnh viện năm 2026</span>
             </motion.h1>
+          </div>
+
+          <div className="max-w-5xl mx-auto bg-red-50/70 border-y-2 border-red-100 py-6 md:py-8 px-4 md:px-8 mb-14 text-center">
+            <p className="text-[12px] md:text-lg text-red-700 font-black italic leading-relaxed">
+              Chủ đề: "Quản trị chất lượng và an toàn người bệnh: từ tiêu chí, tiêu chuẩn quốc gia đến chuẩn mực quốc tế trong kỷ nguyên số"
+            </p>
           </div>
 
           {/* Info Section */}
@@ -221,19 +232,19 @@ const App = () => {
                  <div className="h-16 md:h-20 flex items-center justify-center px-8 py-2 bg-slate-50/50 rounded-2xl border border-slate-100">
                     <img src={logoSponsor} alt="Sponsor" className="h-full w-auto object-contain hover:scale-110 transition-all duration-500" />
                  </div>
-                 <p className="text-[10px] md:text-sm font-black text-green-800 uppercase tracking-tighter whitespace-nowrap">Công ty TNHH Astellas Pharma Việt Nam</p>
+                 <p className="max-w-full text-[10px] md:text-sm font-black text-green-800 uppercase tracking-tighter sm:whitespace-nowrap">Công ty TNHH Astellas Pharma Việt Nam</p>
                </div>
             </div>
           </div>
 
           {/* Location & Time */}
           <div className="text-center space-y-4 mb-14">
-            <div className="inline-flex items-center gap-3 bg-slate-50 px-8 py-3 rounded-full border border-slate-100">
+            <div className="inline-flex max-w-full items-center gap-3 bg-slate-50 px-5 sm:px-8 py-3 rounded-2xl sm:rounded-full border border-slate-100">
               <Calendar size={20} className="text-red-700" />
-              <span className="text-slate-800 font-black text-sm uppercase tracking-wider">Hà Nội, 07 - 08/05/2026</span>
+              <span className="text-slate-800 font-black text-xs sm:text-sm uppercase tracking-wider">Hà Nội, 07 - 08/05/2026</span>
             </div>
-            <div className="flex items-center justify-center gap-2 text-xs text-slate-400 font-bold uppercase tracking-widest">
-              <MapPin size={16} className="text-slate-300" />
+            <div className="flex max-w-3xl mx-auto items-start justify-center gap-2 text-[11px] sm:text-xs text-slate-700 font-black uppercase tracking-wide sm:tracking-widest leading-relaxed">
+              <MapPin size={16} className="text-red-700 mt-0.5 shrink-0" />
               <span>Hội trường Tòa nhà S1 - Số 261 Phùng Hưng, Hà Đông</span>
             </div>
           </div>
@@ -243,7 +254,7 @@ const App = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={openRegistration}
-                className="bg-red-700 text-white px-8 py-4 rounded-xl font-black text-lg shadow-xl shadow-red-900/20 flex items-center gap-2 group"
+                className="w-full md:w-auto justify-center bg-red-700 text-white px-6 sm:px-8 py-4 rounded-xl font-black text-base sm:text-lg shadow-xl shadow-red-900/20 flex items-center gap-2 group"
               >
                 Đăng ký tham dự
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -252,7 +263,7 @@ const App = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveSection('agenda')}
-                className="bg-white border-2 border-green-800 text-green-800 px-8 py-4 rounded-xl font-black text-lg hover:bg-green-50 transition-all flex items-center gap-2"
+                className="w-full md:w-auto justify-center bg-white border-2 border-green-800 text-green-800 px-6 sm:px-8 py-4 rounded-xl font-black text-base sm:text-lg hover:bg-green-50 transition-all flex items-center gap-2"
               >
                 Xem chương trình
               </motion.button>
@@ -268,9 +279,9 @@ const App = () => {
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24 text-left">
                 <div className="lg:col-span-2">
-                  <div className="flex items-center gap-3 mb-8">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8">
                     <img src={logoBV103} alt="Logo BVQY 103" className="h-12 w-auto object-contain" />
-                    <h3 className="font-black text-2xl text-slate-900 tracking-tighter uppercase leading-none whitespace-nowrap">Bệnh viện Quân y 103</h3>
+                    <h3 className="font-black text-xl sm:text-2xl text-slate-900 tracking-tighter uppercase leading-tight sm:leading-none">Bệnh viện Quân y 103</h3>
                   </div>
                   <p className="text-slate-500 text-sm mb-10 max-w-md leading-relaxed">
                     Chuyên nghiệp - Hiệu quả - An toàn - Hợp tác.
@@ -466,7 +477,7 @@ const App = () => {
       {activeSection === 'documents' && (
         <section id="documents" className="py-24 px-4 bg-white min-h-screen pt-24 text-center">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-black mb-4 uppercase tracking-tighter text-emerald-900">Tài liệu tập huấn</h2>
+            <h2 className="text-2xl sm:text-4xl font-black mb-4 uppercase tracking-tighter text-emerald-900 whitespace-nowrap">Tài liệu tập huấn</h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-12">
               <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px]">Tự động cập nhật từ thư viện hệ thống</p>
               <button 
@@ -525,19 +536,17 @@ const App = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.05 }}
                       onClick={() => setSelectedDoc(doc)}
-                      className="group p-8 bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-700/30 rounded-[2.5rem] text-left transition-all cursor-pointer hover:shadow-2xl hover:shadow-red-900/5 flex items-center gap-6"
+                      className="group p-5 sm:p-6 bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-700/30 rounded-2xl text-left transition-all cursor-pointer hover:shadow-2xl hover:shadow-red-900/5 grid grid-cols-[84px_minmax(0,1fr)] gap-4 items-center"
                     >
-                      <div className="w-16 h-16 bg-white group-hover:bg-red-50 rounded-2xl flex items-center justify-center text-red-700 transition-colors shadow-sm">
-                        <FileText size={32} />
+                      <div className="flex flex-col items-center justify-center gap-2">
+                        <div className="w-14 h-14 bg-white group-hover:bg-red-50 rounded-2xl flex items-center justify-center text-red-700 transition-colors shadow-sm">
+                          <FileText size={28} />
+                        </div>
+                        <span className="text-[10px] font-black text-red-700 uppercase tracking-wide text-center">Xem chi tiết</span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-bold text-slate-900 text-lg mb-2 truncate group-hover:text-red-700 transition-colors">{doc.name}</h4>
-                        <div className="flex items-center gap-4">
-                           <span className="text-[9px] font-black text-red-700 uppercase tracking-[0.2em] bg-red-50 px-3 py-1 rounded-full">Tài liệu</span>
-                           <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Bấm để xem</span>
-                        </div>
+                        <h4 className="font-bold text-slate-900 text-base sm:text-lg leading-snug break-words group-hover:text-red-700 transition-colors">{doc.name}</h4>
                       </div>
-                      <ChevronRight size={20} className="text-slate-300 group-hover:text-red-700 group-hover:translate-x-2 transition-all" />
                     </motion.div>
                   ))
                 ) : (
@@ -553,17 +562,17 @@ const App = () => {
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="mt-20 p-10 bg-emerald-900 rounded-[3rem] text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl shadow-emerald-900/20"
+                className="mt-14 p-5 sm:p-6 bg-emerald-900 rounded-2xl text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl shadow-emerald-900/20"
               >
                 <div className="text-center md:text-left">
-                  <h4 className="text-white font-black uppercase text-xl mb-2 tracking-tight">Thư viện Google Drive</h4>
-                  <p className="text-emerald-200 font-bold text-xs uppercase tracking-[0.2em]">Xem và tải trực tiếp tại thư mục gốc của ban tổ chức</p>
+                  <h4 className="text-white font-black uppercase text-[12px] mb-1 tracking-tight">Thư viện Google Drive</h4>
+                  <p className="text-emerald-200 font-bold text-[12px] uppercase tracking-wide">Xem và tải trực tiếp tại thư mục gốc của ban tổ chức</p>
                 </div>
                 <a 
                   href={googleDriveLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-red-700 hover:bg-white hover:text-red-700 text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl shadow-red-900/30 active:scale-95"
+                  className="bg-red-700 hover:bg-white hover:text-red-700 text-white px-6 py-3 rounded-xl font-black text-[12px] uppercase tracking-wide transition-all shadow-lg shadow-red-900/30 active:scale-95"
                 >
                   Mở Thư Mục Drive
                 </a>

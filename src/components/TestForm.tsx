@@ -188,14 +188,14 @@ const TestForm = () => {
 
   if (result) {
     return (
-      <div className="max-w-3xl mx-auto p-4 md:p-8">
-        <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12 text-center">
+      <div className="max-w-3xl mx-auto p-2 sm:p-4 md:p-8">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-100 p-5 sm:p-8 md:p-12 text-center">
           <div className="w-20 h-20 rounded-full bg-green-100 text-green-700 flex items-center justify-center mx-auto mb-6">
             <Award size={42} />
           </div>
-          <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase mb-4">Đã nộp bài kiểm tra</h3>
-          <p className="text-slate-500 font-bold mb-8">{profile.full_name} - {profile.unit}</p>
-          <div className="grid grid-cols-3 gap-3 mb-8">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 uppercase mb-4">Đã nộp bài kiểm tra</h3>
+          <p className="text-sm sm:text-base text-slate-500 font-bold mb-8 break-words">{profile.full_name} - {profile.unit}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
             <div className="rounded-2xl bg-slate-50 p-4">
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Số câu đúng</p>
               <p className="text-2xl font-black text-green-800">{result.score}</p>
@@ -224,8 +224,8 @@ const TestForm = () => {
   if (!started) {
     if (!statusLoading && !testOpen) {
       return (
-        <div className="max-w-2xl mx-auto p-4 md:p-8">
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12 text-center">
+        <div className="max-w-2xl mx-auto p-2 sm:p-4 md:p-8">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-8 md:p-12 text-center">
             <div className="w-16 h-16 rounded-full bg-red-50 text-red-700 flex items-center justify-center mx-auto mb-6">
               <AlertCircle size={34} />
             </div>
@@ -241,12 +241,12 @@ const TestForm = () => {
     }
 
     return (
-      <div className="max-w-2xl mx-auto p-4 md:p-8">
-        <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 md:p-10">
-          <h3 className="text-2xl font-black text-slate-800 mb-2 uppercase tracking-tight text-center">
+      <div className="max-w-2xl mx-auto p-2 sm:p-4 md:p-8">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-100 p-5 sm:p-6 md:p-10">
+          <h3 className="text-xl sm:text-2xl font-black text-slate-800 mb-2 uppercase tracking-tight text-center">
             Thông tin làm bài
           </h3>
-          <p className="text-center text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] mb-8">
+          <p className="text-center text-[10px] text-slate-400 font-black uppercase tracking-wider sm:tracking-[0.2em] mb-8">
             Hệ thống sẽ chọn ngẫu nhiên 30 câu từ bộ {quiz.questions.length} câu hỏi
           </p>
 
@@ -326,12 +326,12 @@ const TestForm = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-4 md:p-8">
-      <div className="sticky top-16 z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-3xl shadow-sm p-4 md:p-6 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
+    <div className="max-w-5xl mx-auto p-2 sm:p-4 md:p-8">
+      <div className="sticky top-14 sm:top-16 z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 md:p-6 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="min-w-0">
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Người làm bài</p>
-          <h3 className="font-black text-slate-900 uppercase">{profile.full_name}</h3>
-          <p className="text-xs font-bold text-slate-500">{profile.rank_position} - {profile.unit}</p>
+          <h3 className="font-black text-slate-900 uppercase break-words">{profile.full_name}</h3>
+          <p className="text-xs font-bold text-slate-500 break-words">{profile.rank_position} - {profile.unit}</p>
         </div>
         <div className="text-left md:text-right">
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Tiến độ</p>
@@ -348,14 +348,14 @@ const TestForm = () => {
 
       <div className="space-y-5">
         {questions.map((question, index) => (
-          <div key={question.id} className="bg-white border border-slate-100 rounded-3xl p-5 md:p-7 shadow-sm text-left">
-            <div className="flex items-start gap-4 mb-5">
-              <div className="w-10 h-10 rounded-2xl bg-green-800 text-white flex items-center justify-center font-black shrink-0">
+          <div key={question.id} className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-7 shadow-sm text-left">
+            <div className="flex items-start gap-3 sm:gap-4 mb-5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-green-800 text-white flex items-center justify-center font-black shrink-0">
                 {index + 1}
               </div>
               <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{question.module}</p>
-                <h4 className="font-black text-slate-900 leading-relaxed">{question.question}</h4>
+                <p className="text-[10px] font-black uppercase tracking-wide sm:tracking-widest text-slate-400 mb-2">{question.module}</p>
+                <h4 className="font-black text-sm sm:text-base text-slate-900 leading-relaxed">{question.question}</h4>
               </div>
             </div>
 
@@ -367,7 +367,7 @@ const TestForm = () => {
                     key={answer.id}
                     type="button"
                     onClick={() => chooseAnswer(question.id, answer.id)}
-                    className={`text-left rounded-2xl border p-4 transition-all flex items-start gap-3 ${
+                    className={`text-left rounded-2xl border p-3 sm:p-4 transition-all flex items-start gap-3 ${
                       selected
                         ? 'border-red-700 bg-red-50 text-red-900 shadow-sm'
                         : 'border-slate-200 bg-slate-50 hover:border-green-700 hover:bg-white'
@@ -378,7 +378,7 @@ const TestForm = () => {
                     }`}>
                       {answer.id}
                     </span>
-                    <span className="text-sm font-bold leading-relaxed">{answer.text}</span>
+                    <span className="text-sm font-bold leading-relaxed break-words">{answer.text}</span>
                   </button>
                 );
               })}
