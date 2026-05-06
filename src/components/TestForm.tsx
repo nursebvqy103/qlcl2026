@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { AlertCircle, Award, Briefcase, CheckCircle2, Loader2, MapPin, Play, RotateCcw, Send, User } from 'lucide-react';
 import testData from '../../test.json';
@@ -28,6 +28,22 @@ type QuizData = {
 
 const QUESTION_COUNT = 30;
 const quiz = testData as QuizData;
+const QUIZ_ID = quiz.quiz_id ?? 'qlclbv_2026';
+
+const normalizeProfileValue = (value: string) =>
+  value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+
+const normalizeNameKey = (value: string) => normalizeProfileValue(value).split(' ').filter(Boolean).sort().join(' ');
+const getSubmissionLockKey = (fullName: string, unit: string) =>
+  `kq_test_submitted:${normalizeNameKey(fullName)}:${normalizeProfileValue(unit)}`;
 
 const shuffle = <T,>(items: T[]) => {
   const copied = [...items];
@@ -49,11 +65,33 @@ const TestForm = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [loading, setLoading] = useState(false);
   const [statusLoading, setStatusLoading] = useState(true);
+  const [duplicateChecking, setDuplicateChecking] = useState(false);
+  const [hasSubmittedBefore, setHasSubmittedBefore] = useState(false);
   const [testOpen, setTestOpen] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<{ score: number; total: number; percentage: number } | null>(null);
 
   const answeredCount = useMemo(() => Object.keys(answers).length, [answers]);
+  const profileReadyForDuplicateCheck = Boolean(profile.full_name.trim() && profile.unit.trim());
+
+  const checkExistingSubmission = useCallback(async (fullName: string, unit: string) => {
+    if (typeof window !== 'undefined' && window.localStorage.getItem(getSubmissionLockKey(fullName, unit))) {
+      return true;
+    }
+
+    const nameKey = normalizeNameKey(fullName);
+    const unitKey = normalizeProfileValue(unit);
+
+    const { data, error: checkError } = await supabase
+      .from('kq_test')
+      .select('id, full_name, unit')
+      .limit(10000);
+
+    if (checkError) throw checkError;
+    return Boolean(
+      data?.some((item) => normalizeNameKey(item.full_name ?? '') === nameKey && normalizeProfileValue(item.unit ?? '') === unitKey)
+    );
+  }, []);
 
   useEffect(() => {
     const fetchTestStatus = async () => {
@@ -78,11 +116,50 @@ const TestForm = () => {
     fetchTestStatus();
   }, []);
 
+  useEffect(() => {
+    const fullName = profile.full_name.trim();
+    const unit = profile.unit.trim();
+
+    if (!fullName || !unit) {
+      setHasSubmittedBefore(false);
+      setDuplicateChecking(false);
+      return;
+    }
+
+    let active = true;
+    setHasSubmittedBefore(false);
+    setDuplicateChecking(true);
+
+    const timer = window.setTimeout(async () => {
+      try {
+        const exists = await checkExistingSubmission(fullName, unit);
+        if (active) {
+          setHasSubmittedBefore(exists);
+        }
+      } catch (err) {
+        console.error('Check existing test submission error:', err);
+        if (active) {
+          setHasSubmittedBefore(false);
+        }
+      } finally {
+        if (active) {
+          setDuplicateChecking(false);
+        }
+      }
+    }, 450);
+
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
+  }, [checkExistingSubmission, profile.full_name, profile.unit]);
+
   const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
+    setError(null);
   };
 
-  const startTest = (e: React.FormEvent) => {
+  const startTest = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
@@ -94,6 +171,21 @@ const TestForm = () => {
     if (!profile.full_name.trim() || !profile.rank_position.trim() || !profile.unit.trim()) {
       setError('Vui lòng nhập đầy đủ Họ và tên, Cấp bậc/chức vụ và Đơn vị.');
       return;
+    }
+
+    setDuplicateChecking(true);
+    try {
+      const exists = await checkExistingSubmission(profile.full_name, profile.unit);
+      if (exists) {
+        setHasSubmittedBefore(true);
+        setError('Họ tên và đơn vị này đã làm bài kiểm tra. Mỗi người chỉ được làm bài 1 lần.');
+        return;
+      }
+    } catch (err: any) {
+      setError('Không thể kiểm tra thông tin làm bài: ' + (err.message || 'Vui lòng thử lại.'));
+      return;
+    } finally {
+      setDuplicateChecking(false);
     }
 
     setQuestions(shuffle(quiz.questions).slice(0, QUESTION_COUNT));
@@ -141,6 +233,14 @@ const TestForm = () => {
     const percentage = Math.round((score / total) * 10000) / 100;
 
     try {
+      const exists = await checkExistingSubmission(profile.full_name, profile.unit);
+      if (exists) {
+        setHasSubmittedBefore(true);
+        setStarted(false);
+        setError('Họ tên và đơn vị này đã có bài nộp trong hệ thống. Mỗi người chỉ được làm bài 1 lần.');
+        return;
+      }
+
       const { error: submitError } = await supabase.from('kq_test').insert([
         {
           full_name: profile.full_name.trim(),
@@ -164,10 +264,20 @@ const TestForm = () => {
       ]);
 
       if (submitError) {
+        if (submitError.code === '23505') {
+          setHasSubmittedBefore(true);
+          setStarted(false);
+          setError('Họ tên và đơn vị này đã có bài nộp trong hệ thống. Mỗi người chỉ được làm bài 1 lần.');
+          return;
+        }
         setError(`Lỗi CSDL: ${submitError.message}`);
         return;
       }
 
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(getSubmissionLockKey(profile.full_name, profile.unit), new Date().toISOString());
+      }
+      setHasSubmittedBefore(true);
       setResult({ score, total, percentage });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err: any) {
@@ -209,13 +319,9 @@ const TestForm = () => {
               <p className="text-2xl font-black text-red-700">{result.percentage}%</p>
             </div>
           </div>
-          <button
-            onClick={resetTest}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 text-white font-black uppercase tracking-widest text-xs hover:bg-red-700 transition-colors"
-          >
-            <RotateCcw size={16} />
-            Làm lại
-          </button>
+          <p className="text-sm font-bold text-slate-500">
+            Kết quả đã được ghi nhận. Mỗi người chỉ được làm bài kiểm tra 1 lần.
+          </p>
         </div>
       </div>
     );
@@ -309,16 +415,39 @@ const TestForm = () => {
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              disabled={statusLoading || !testOpen}
-              className="w-full bg-red-700 hover:bg-red-800 text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-red-900/20 uppercase tracking-widest text-sm flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              <Play size={20} />
-              Bắt đầu làm bài
-            </motion.button>
+            {profileReadyForDuplicateCheck && duplicateChecking ? (
+              <div className="p-4 bg-slate-50 text-slate-500 rounded-2xl border border-slate-100 text-sm font-bold text-center flex items-center justify-center gap-2">
+                <Loader2 size={18} className="animate-spin" />
+                Đang quét thông tin họ tên và đơn vị...
+              </div>
+            ) : null}
+
+            {profileReadyForDuplicateCheck && hasSubmittedBefore ? (
+              <div className="p-4 bg-red-50 text-red-700 rounded-2xl border border-red-100 text-sm font-bold text-center flex items-center justify-center gap-2">
+                <AlertCircle size={18} />
+                Họ tên và đơn vị này đã làm bài kiểm tra. Nút bắt đầu đã được ẩn vì mỗi người chỉ được làm bài 1 lần.
+              </div>
+            ) : null}
+
+            {profileReadyForDuplicateCheck && !duplicateChecking && !hasSubmittedBefore ? (
+              <div className="p-4 bg-green-50 text-green-700 rounded-2xl border border-green-100 text-sm font-bold text-center flex items-center justify-center gap-2">
+                <CheckCircle2 size={18} />
+                Thông tin chưa có bài nộp, có thể bắt đầu làm bài.
+              </div>
+            ) : null}
+
+            {!hasSubmittedBefore ? (
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={statusLoading || duplicateChecking || !testOpen}
+                className="w-full bg-red-700 hover:bg-red-800 text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-red-900/20 uppercase tracking-widest text-sm flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {duplicateChecking ? <Loader2 size={20} className="animate-spin" /> : <Play size={20} />}
+                {duplicateChecking ? 'Đang kiểm tra thông tin...' : 'Bắt đầu làm bài'}
+              </motion.button>
+            ) : null}
           </form>
         </div>
       </div>

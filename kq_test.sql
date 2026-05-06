@@ -31,6 +31,14 @@ GRANT SELECT, INSERT ON public.kq_test TO anon;
 GRANT SELECT, INSERT ON public.kq_test TO authenticated;
 GRANT ALL ON public.kq_test TO service_role;
 
+-- Gioi han moi ho ten + don vi chi nop 1 bai kiem tra.
+-- Neu CSDL da co du lieu trung, can xu ly cac dong trung truoc khi tao index nay.
+CREATE UNIQUE INDEX IF NOT EXISTS kq_test_one_submission_per_person_unit_quiz
+ON public.kq_test (
+  lower(btrim(full_name)),
+  lower(btrim(unit))
+);
+
 -- Bảng cấu hình ứng dụng, dùng để đóng/mở bài kiểm tra
 CREATE TABLE IF NOT EXISTS public.app_settings (
   key TEXT PRIMARY KEY,
