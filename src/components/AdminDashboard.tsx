@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { ChevronLeft, ClipboardCheck, Download, Power, RefreshCw, Users } from 'lucide-react';
+import * as XLSX from 'xlsx';
 
 type AdminTab = 'registrations' | 'tests';
+const PASSING_PERCENTAGE = 50;
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('registrations');
@@ -113,23 +115,35 @@ const AdminDashboard = () => {
     downloadCSV(BOM + header + '\n' + rows.join('\n'), `danh_sach_dang_ky_${new Date().toISOString().slice(0, 10)}.csv`);
   };
 
-  const exportTestResultsToCSV = () => {
-    const BOM = '\uFEFF';
-    const header = ['STT', 'ID', 'Họ và tên', 'Cấp bậc/Chức vụ', 'Đơn vị', 'Điểm', 'Tổng điểm', 'Tỷ lệ', 'Thời gian nộp'].join(',');
+  const exportTestResultsToExcel = () => {
+    const rows = testResults.map((item) => {
+      const score = Number(item.score ?? 0);
+      const total = Number(item.max_score ?? item.total_questions ?? 30);
+      const percentage = total > 0 ? (score / total) * 100 : 0;
 
-    const rows = testResults.map((item, index) => [
-      index + 1,
-      item.id,
-      `"${item.full_name || ''}"`,
-      `"${item.rank_position || ''}"`,
-      `"${item.unit || ''}"`,
-      item.score ?? 0,
-      item.max_score ?? item.total_questions ?? 30,
-      `"${item.percentage ?? 0}%"`,
-      `"${item.created_at ? new Date(item.created_at).toLocaleString('vi-VN') : ''}"`
-    ].join(','));
+      return {
+        'Họ tên': item.full_name || '',
+        'Cấp bậc/chức vụ': item.rank_position || '',
+        'Đơn vị': item.unit || '',
+        'Số câu trả lời đúng  .../30': `${score}/${total}`,
+        'Đạt': percentage >= PASSING_PERCENTAGE ? 'Đạt' : 'Chưa đạt'
+      };
+    });
 
-    downloadCSV(BOM + header + '\n' + rows.join('\n'), `ket_qua_kiem_tra_${new Date().toISOString().slice(0, 10)}.csv`);
+    const worksheet = XLSX.utils.json_to_sheet(rows, {
+      header: ['Họ tên', 'Cấp bậc/chức vụ', 'Đơn vị', 'Số câu trả lời đúng  .../30', 'Đạt']
+    });
+    worksheet['!cols'] = [
+      { wch: 28 },
+      { wch: 24 },
+      { wch: 28 },
+      { wch: 26 },
+      { wch: 12 }
+    ];
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Ket qua test');
+    XLSX.writeFile(workbook, `ket_qua_kiem_tra_${new Date().toISOString().slice(0, 10)}.xlsx`);
   };
 
   const downloadCSV = (content: string, filename: string) => {
@@ -187,11 +201,11 @@ const AdminDashboard = () => {
               Làm mới
             </button>
             <button
-              onClick={activeTab === 'registrations' ? exportRegistrationsToCSV : exportTestResultsToCSV}
+              onClick={activeTab === 'registrations' ? exportRegistrationsToCSV : exportTestResultsToExcel}
               className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-green-700 hover:bg-green-800 text-white rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20 text-xs sm:text-sm uppercase tracking-wider"
             >
               <Download size={16} />
-              Xuất CSV
+              {activeTab === 'registrations' ? 'Xuất CSV' : 'Xuất Excel'}
             </button>
           </div>
         </div>
